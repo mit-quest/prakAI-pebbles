@@ -33,7 +33,7 @@ Following [Electron's first app documentation](https://electronjs.org/docs/tutor
 Building PrakAI-Pebbles by completing the following steps:
 
 1. Download this repo
-2. Terminal into it
+2. Terminal into the `prakAI-pebbles` directory inside the local copy
 3. Install all dependencies by running `npm install` 
 4. Preview the app by running `npm start` 
 

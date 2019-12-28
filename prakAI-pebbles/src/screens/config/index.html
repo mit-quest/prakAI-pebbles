@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">
+		<link rel="stylesheet" href="../../css/main.css">
+		<script src="./pre.js"></script>
+		<title>Config</title>
+	</head>
+	<body>
+		
+		<div class="container-fluid">
+
+			<div class="row">
+				<div class="col-sm-7">
+					<h1>Experiment Configuration</h1>
+				</div>
+				<div class="col-sm-4 text-right">
+					<button type="button" 
+							class="btn btn-lg btn-primary test"
+							onclick="validateAndBegin();">
+						Start Experiment
+					 </button>
+				</div>
+				<div class="col-sm-1">
+					<!-- spacer for button -->
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<hr class="thickSeparator">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3 text-left">
+					<button type="button" 
+							class="btn btn-lg btn-primary test"
+							onclick="loadDirectoryOfExperiments();">
+						Load Config Directory
+					 </button>
+				</div>
+				<div class="col-sm-9">
+					<p>
+						Use the button to the left to load a folder of valid experimental config files, 
+						data will be
+						 previewed below.
+						<a href="">Click here for instructions</a>.
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<hr class="thinSeparator">
+				</div>
+			</div>
+
+			<!-- targeted by loadDirectoryOfExperiments() which is in pre.js -->
+			<div id="preview" class="previewPane"></div>
+
+		</div>
+
+		<script src="./post.js"></script>
+	</body>
+</html>
+

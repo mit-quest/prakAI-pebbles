@@ -1,0 +1,35 @@
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	margin: auto;
+	max-width: 38rem;
+	padding: 2rem;
+}
+
+.framed {
+	border: 2px solid black;
+}
+
+.previewImage {
+	border: 1px solid black;
+	width: 40px;
+}
+
+.mainImage {
+	width: 100%;
+}
+
+.choiceImage {
+	width: 100%;
+}
+
+.previewPane {
+	background-color: lightblue;
+}
+
+.thickSeparator {
+	border: 3px solid black;
+}
+
+.thinSeparator {
+	border: 1px solid black;
+}
