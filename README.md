@@ -10,6 +10,7 @@ An Electron app with touch interactions for visual cognition testing in children
 		- [Packaging the App using Electron Forge](#packaging-the-app-using-electron-forge)
 	- [Why PrakAI?](#why-prakai)
 	- [Why Pebbles?](#why-pebbles)
+	- [Feature Queue](#feature-queue)
 
 ## Using the App
 You can download the executable in the `out` directory to install and run the app. If you simply want to run the app and see what it does, then then you will need to download two things: 
@@ -48,6 +49,24 @@ The name of the PrakAI Suite is a reference to the use of technology in service 
 
 ## Why Pebbles?
 The first use of this app was to create a touch-driven digital version of an existing experiment that was run by having children select matching pebbles from a table in front of them. It is also a small homage to a great story (credited to [Edward de Bono](https://en.wikipedia.org/wiki/Edward_de_Bono)) about lateral thinking called [The Tale of Two Pebbles](https://academictips.org/blogs/the-tale-of-two-pebbles/) that illustrates the importance of changing one's perspective when faced with a seemingly difficult situation.
+
+## Feature Queue
+- data structure
+  - transparent background images in html or quick fix just test with background set as same as image
+  - figure out the standard size of images in images folder
+- config screen
+  - select background color for experiments and apply to preview
+  - way to fix image to be absolute size,
+    - give an example image that can be dragged that will fix the size of every other image
+    - give two images to fix distance between stimuli, this will set global padding
+- start screen
+  - better styling
+- experiment screen
+  - make full screen duing experiment, hide mouse, block system notifications
+  - sound for each visual change
+  - might want to add another start button above mainImage
+- results screen- 
+  - save results button and maybe auto save?
 
 
 
