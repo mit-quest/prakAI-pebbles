@@ -59,6 +59,7 @@ The first use of this app was to create a touch-driven digital version of an exi
   - way to fix image to be absolute size,
     - give an example image that can be dragged that will fix the size of every other image
     - give two images to fix distance between stimuli, this will set global padding
+  - move config loading dialog into menu
 - start screen
   - better styling
 - experiment screen
