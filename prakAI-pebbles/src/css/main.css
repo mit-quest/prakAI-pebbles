@@ -22,14 +22,19 @@ body {
 	width: 100%;
 }
 
-.previewPane {
-	background-color: lightblue;
-}
-
 .thickSeparator {
 	border: 3px solid black;
 }
 
 .thinSeparator {
 	border: 1px solid black;
+}
+
+.testImage {
+	margin: auto;
+	width: 50px;
+}
+
+.textImageContainer {
+
 }

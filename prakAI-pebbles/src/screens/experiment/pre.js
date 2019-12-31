@@ -1,7 +1,5 @@
 console.log("begin experiment/pre.js");
 
-
-
 let allData = JSON.parse(sessionStorage.getItem("allData"));
 let allDataLength = Object.keys(allData).length;
 
@@ -33,6 +31,8 @@ function displayNext() {
 }
 
 function display() {
+
+	playSound('mainSound');
 
 	// clear left div
 	leftDiv = document.getElementById('left');
@@ -94,6 +94,8 @@ function display() {
 
 function showChoices() {
 
+	playSound('choiceSound');
+
 	if (displaySetting == 1) {
 
 		rightDiv.appendChild(choicesContent);
@@ -143,3 +145,10 @@ function displayEnd(data) {
 	mainWindow.loadURL(content);
 
 }
+
+function playSound (type) {
+	var soundElem = document.getElementById(type);
+	soundElem.play();
+}
+
+

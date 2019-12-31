@@ -19,6 +19,7 @@ const createWindow = () => {
 			nodeIntegration: true,
 			preload: path.join(app.getAppPath(), 'src', 'scripts', 'preload.js')
 		},
+		backgroundColor: '#000000',
 		show: false
 	});
 
@@ -30,7 +31,9 @@ const createWindow = () => {
 	menu = require(path.join(app.getAppPath(), 'src', 'scripts', 'makeMenu.js'));
 	Menu.setApplicationMenu(menu.makeMenu());
 
-	mainWindow.show(); 
+	mainWindow.once('ready-to-show', () => {
+		mainWindow.show();
+	});
 	
 	// Emitted when the window is closed.
 	mainWindow.on('closed', () => {
