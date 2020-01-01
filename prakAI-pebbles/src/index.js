@@ -26,7 +26,7 @@ const createWindow = () => {
 	firstScreen = path.join(app.getAppPath(), 'src', 'screens', 'config', 'index.html');
 	mainWindow.loadURL(firstScreen);
 
-	mainWindow.webContents.openDevTools();
+	//mainWindow.webContents.openDevTools();
 
 	menu = require(path.join(app.getAppPath(), 'src', 'scripts', 'makeMenu.js'));
 	Menu.setApplicationMenu(menu.makeMenu());
