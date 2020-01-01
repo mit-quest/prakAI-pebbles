@@ -17,7 +17,8 @@ An Electron app with touch interactions for visual cognition testing in children
 You can download the executable in the `out` directory to install and run the app. If you simply want to run the app and see what it does, then then you will need to download two things: 
 
 1. the executable for your system in the `out` directory (if there is now installer, then see the next section)
-2. the `example_config` directory so you can load it into the app when it launches
+2. the `example_experiments` directory has example configuration directories inside that you can load into the app to see how it works.
+3. the `example_datalogs` directory has some example log files from success runs of an experiment, it is useful for writing analysis scripts.
 
 ## Previewing, Packaging, and Modifying the App
 If there is not an installer in the `out` directory for your OS, then you will need to build it for yourself using [Electron](https://electronjs.org/) and [Electron Forge](https://www.electronforge.io/), it is really not too bad I promise. 

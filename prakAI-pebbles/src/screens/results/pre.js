@@ -6,8 +6,10 @@ function returnToConfig() {
 	const path = require('path');
 	const fs = require('fs');
 
+	let mainWindow = getCurrentWindow();
+
 	//save data
-	options = {
+	saveOptions = {
 		title: "Save Data Log",
 		defaultPath : Date.now() + '.json',
 		buttonLabel : "Save",
@@ -16,22 +18,26 @@ function returnToConfig() {
 		  {name: 'json', extensions: ['json']}
 		 ]
 	 };
-
-	console.log('open save');
-	userInput = dialog.showSaveDialogSync( options );
+	 
+	userInput = dialog.showSaveDialogSync(mainWindow, saveOptions);
 	dataLog = sessionStorage.getItem("dataLog");
 	console.log(userInput);
 	if (userInput !== undefined) {
 		console.log(userInput);
 		fs.writeFileSync(userInput, JSON.stringify(dataLog), 'utf-8');
+	} else {
+		messageOptions = {
+			message: 'You did not save the data, are you sure you want to proceed?',
+			buttons: ['discard data', 'go back and save data'],
+			defaultId: 1
+		};
+		userInput = dialog.showMessageBoxSync(mainWindow, messageOptions);
+		if (userInput == 0) {
+			mainWindow.setMenuBarVisibility(true);
+			mainWindow.setFullScreen(false);
+			let content = path.join(app.getAppPath(), 'src', 'screens', 'config', 'index.html');
+			mainWindow.loadURL(content);
+		}
 	}
-	console.log('end save');
-
-	//start screen 
-	let mainWindow = getCurrentWindow();
-	mainWindow.setMenuBarVisibility(true);
-	mainWindow.setFullScreen(false);
-	let content = path.join(app.getAppPath(), 'src', 'screens', 'config', 'index.html');
-	//mainWindow.loadURL(content);
 
 }

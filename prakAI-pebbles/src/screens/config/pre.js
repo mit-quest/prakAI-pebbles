@@ -3,38 +3,13 @@ console.log("begin config/pre.js");
 const { dialog, getCurrentWindow, app } = require('electron').remote;
 const path = require('path');
 
-function setBackgroundColor() {
-	backgroundColor = sessionStorage.getItem("backgroundColor");
-	previewPane = document.getElementById('preview');
-	previewPane.style.backgroundColor = backgroundColor;
+let leftDiv, rightDiv;
+let mainContent, choicesContent;
 
-	settingsPreviewPane = document.getElementById('settingsPreviewPane');
-	settingsPreviewPane.style.backgroundColor = backgroundColor;
-}
-
-function setFontColor() {
-	fontColor = sessionStorage.getItem("fontColor");
-	elems = document.getElementsByClassName('previewText');
-	for (const elem of elems) {
-		elem.style.color = fontColor;
-	}
-}
-
-function setSize() {
-	size = sessionStorage.getItem("size");
-	elems = document.getElementsByClassName('testImage');
-	for (const elem of elems) {
-		elem.style.width = size + 'px';
-	}
-}
-
-function setSpacing() {
-	spacing = sessionStorage.getItem("spacing");
-	elems = document.getElementsByClassName('testImageContainer');
-	for (const elem of elems) {
-		elem.style.marginRight = spacing + 'px';
-	}
-}
+let showImages = require('../../scripts/showImages.js');
+let showMain = showImages.functions.showMain;
+let showChoices = showImages.functions.showChoices;
+let refreshStyling = showImages.functions.refreshStyling;
 
 function displayCachedExperiment() {
 	cachedExperiments = sessionStorage.getItem("allData");
@@ -42,7 +17,7 @@ function displayCachedExperiment() {
 		allData = JSON.parse(cachedExperiments);
 		if (validDataQ(allData)) {
 			resetPreview();
-			targetElement = document.getElementById("preview");
+			targetElement = document.getElementById('experimentPreviewList');
 			displayPreview(allData, targetElement);
 		}
 	} else {
@@ -83,7 +58,7 @@ function loadDirectoryOfExperiments() {
 		sessionStorage.setItem("allData", JSON.stringify(allData));
 
 		resetPreview();
-		targetElement = document.getElementById("preview");
+		targetElement = document.getElementById("experimentPreviewList");
 		displayPreview(allData, targetElement);
 		
 	} else {
@@ -95,7 +70,7 @@ function loadDirectoryOfExperiments() {
 }
 
 function resetPreview() {
-	targetElement = document.getElementById("preview");		
+	targetElement = document.getElementById("experimentPreviewList");		
 	while (targetElement.lastChild) {
 		targetElement.removeChild(targetElement.lastChild);
 	}
@@ -103,11 +78,10 @@ function resetPreview() {
 
 function noExprMessage() {
 	resetPreview();
-	targetElement = document.getElementById("preview");	
+	targetElement = document.getElementById("experimentPreviewList");	
 	targetElement.innerHTML = '<p class="previewText">No experiment loaded</p>';
-	setFontColor();
+	refreshStyling();
 }
-
 
 function validateAndBegin() {
 	allData = JSON.parse(sessionStorage.getItem("allData"));
@@ -123,48 +97,44 @@ function validateAndBegin() {
 }
 
 function displayPreview(allData, targetElement) {
-	for (const run of allData) {
-		
-		if ( run["displaySetting"] == 1 ) {
-			displaySetting = 'left';
-		} else {
-			displaySetting = 'right';
-		}
+	
+	currentExperiment = -1;
 
-		mainImage = run["mainImage"];
-		images = run["images"];
+	for (const experiment of allData) {
+		
+		currentExperiment++;
+
+		displaySetting = experiment["displaySetting"];
+		mainImage = experiment["mainImage"];
+		images = experiment["images"];
 		mainImagePosition = images.indexOf(mainImage);
 
-		element = document.createElement("div");
-		element.setAttribute("class", "row");
-
-		str1 = '<div class="col-12 previewText"><p> show on ' + 
+		previewTextHTML = document.createElement('div');
+		
+		previewTextHTML.innerHTML = '<p>Experiment #' + 
+			currentExperiment + 
+			': displaySetting=' + 
 			JSON.stringify(displaySetting) + 
-			' with correct match at position ' +
+			', correct match at position #' +
 			JSON.stringify(mainImagePosition) +
-			'</p></div>';
+			'.</p>';
 
-		str2 = 
-			'<div class="col-12"><img class="previewImage" src="' + 
-			mainImage + 
-			'" alt=""></div>';
+		targetElement.appendChild(previewTextHTML);
 
-		imagePaths = [];
-		images.forEach((image, index) => {
-			imagePaths[index] = 
-				'<img class="previewImage" src="' + 
-				image + 
-				'" alt="">'
-		});
+		experimentTableHTML = document.createElement('table');
+		experimentTableHTML.setAttribute('id', 'experimentTable');
+		targetElement.appendChild(experimentTableHTML);
 
-		str3 = '<div class="col-12">' + imagePaths.join("") + '</div>';
+		showMain(experiment);
+		showChoices(experiment);
 
-		displayString = str1 + str2 + str3;
-		element.innerHTML = displayString;
-		targetElement.appendChild(element);
-
-		setBackgroundColor(sessionStorage.getItem("backgroundColor"));
-		setFontColor(sessionStorage.getItem("fontColor"));
+		experimentTableHTML.setAttribute('id', '');
+		mainImageHTML = document.getElementById('mainImageTD');
+		mainImageHTML.setAttribute('id', '');	
+		expImages = document.getElementsByClassName('expImageTD');
+		for (const elem of expImages) {
+			elem.setAttribute('id', '');
+		}
 
 	}
 

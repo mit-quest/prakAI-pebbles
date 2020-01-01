@@ -1,0 +1,17 @@
+[
+	{
+		"displaySetting": 1,
+		"mainImage": "1.gif",
+		"images": [ "1.gif", "2.jpg", "3.png", "4.svg", "5.png", "6.png" ]
+	},
+	{
+		"displaySetting": 2,
+		"mainImage": "4.svg",
+		"images": [ "3.png", "2.jpg", "1.gif", "4.svg", "5.png", "6.png" ]
+	},
+	{
+		"displaySetting": 1,
+		"mainImage": "5.png",
+		"images": [ "6.png", "5.png", "4.svg", "3.png", "2.jpg", "1.gif" ]
+	}
+]

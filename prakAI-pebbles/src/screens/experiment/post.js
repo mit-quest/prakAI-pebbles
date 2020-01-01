@@ -1,5 +1,8 @@
 console.log("begin experiment/post.js");
-//uses global currentExperiment
+
+setAppBackground();
+refreshStyling();
+
 displayNext();
 
 sounds = ['mainSound', 'choiceSound'];

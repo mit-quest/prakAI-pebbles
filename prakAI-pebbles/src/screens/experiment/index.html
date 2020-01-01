@@ -10,23 +10,16 @@
 	</head>
 	<body>
 		
-		<div class="container-fluid">
+		<table id="experimentTable"></table>
 
-			<div class="row">
-				<div id="left"></div>
-				<div id="right"></div>
-			</div>
-
-			<!-- targeted by playSound() which is in pre.js -->
-			<div class="row">
-				<audio id="mainSound">
-					<source src="../../sounds/mainSound.wav" type="audio/wav">
-				</audio> 
-				<audio id="choiceSound">
-					<source src="../../sounds/choiceSound.wav" type="audio/wav">
-				</audio> 
-			</div>
-
+		<!-- targeted by playSound() which is in pre.js -->
+		<div class="row">
+			<audio id="mainSound">
+				<source src="../../sounds/mainSound.wav" type="audio/wav">
+			</audio> 
+			<audio id="choiceSound">
+				<source src="../../sounds/choiceSound.wav" type="audio/wav">
+			</audio> 
 		</div>
 
 		<script src="./post.js"></script>

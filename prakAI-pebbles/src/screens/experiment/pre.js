@@ -10,105 +10,46 @@ let displaySetting, mainImage, images, mainImagePosition;
 let leftDiv, rightDiv;
 let mainContent, choicesContent;
 
+let showImages = require('../../scripts/showImages.js');
+let showMain = showImages.functions.showMain;
+let showChoices = showImages.functions.showChoices;
+let setAppBackground = showImages.functions.setAppBackground;
+let refreshStyling = showImages.functions.refreshStyling;
+
 function displayNext() {
-
 	currentExperiment++;
-
 	if (currentExperiment > allDataLength - 1) {
-
 		displayEnd([]);
-
 	} else {
+		clearDisplay();
+		playSound('mainSound');
+		showMain(allData[currentExperiment]);
+		mainImage = document.getElementById('mainImageLink');
+		mainImage.setAttribute('onclick', 'clickOnMain();');
+	}
+}
 
-		displaySetting = allData[currentExperiment]["displaySetting"];
-		mainImage = allData[currentExperiment]["mainImage"];
-		images = allData[currentExperiment]["images"];
-		mainImagePosition = images.indexOf(mainImage);
-		display();
-
+function clickOnMain () {
+	logMain(currentExperiment);
+	playSound("choiceSound");
+	showChoices();
+	choiceImages = document.getElementsByClassName('expImageLink');
+	index = -1;
+	for (const image of choiceImages) {
+		index++;
+		image.setAttribute('onclick', 'logChoice(currentExperiment, ' + index + ');displayNext();');
 	}
 
 }
 
-function display() {
-
-	playSound('mainSound');
-
-	// clear left div
-	leftDiv = document.getElementById('left');
-	while (leftDiv.lastChild) {
-		leftDiv.removeChild(leftDiv.lastChild);
+function clearDisplay() {
+	experimentTable = document.getElementById('experimentTable');
+	while (experimentTable.lastChild) {
+		experimentTable.removeChild(experimentTable.lastChild);
 	}
-	leftDiv.setAttribute("class", "");
-
-	//clear right div
-	rightDiv = document.getElementById('right');
-	while (rightDiv.lastChild) {
-		rightDiv.removeChild(rightDiv.lastChild);
-	}
-	rightDiv.setAttribute("class", "");
-
-	// compute main content, displayed in this function later
-	mainContent = document.createElement("DIV");
-	mainContent.setAttribute("class", "row ");
-
-	mainContentString = '\
-		<div class="col-12">\
-			<a href="#" onclick="logMain();showChoices();">\
-				<img src="' + mainImage + '" class="mainImage">\
-			</a>\
-		</div>\
-	';
-
-	mainContent.innerHTML = mainContentString;
-
-	//compute choice div, but only displayed on showChoices()
-	choicesContent = document.createElement("DIV");
-	choicesContent.setAttribute("class", "row");
-
-	imagePaths = [];
-	images.forEach((image, index) => {
-		imagePaths[index] = '\
-			<div class="col-4">\
-				<a href="#" onclick="logChoice(' + index + ');displayNext();">\
-					<img src="' + image + '" class="choiceImage">\
-				</a>\
-			</div>\
-		';
-	});
-
-	choicesContent.innerHTML = imagePaths.join("");
-
-	// prepare layout and display mainContent
-	if (displaySetting == 1) {
-		leftDiv.setAttribute("class", "col-3");
-		leftDiv.appendChild(mainContent);
-		rightDiv.setAttribute("class", "col-9");
-	} else {
-		leftDiv.setAttribute("class", "col-9");
-		rightDiv.setAttribute("class", "col-3");
-		rightDiv.appendChild(mainContent);
-	}
-
 }
 
-function showChoices() {
-
-	playSound('choiceSound');
-
-	if (displaySetting == 1) {
-
-		rightDiv.appendChild(choicesContent);
-
-	} else {
-
-		leftDiv.appendChild(choicesContent);
-
-	}
-
-}
-
-function logChoice(selection) {
+function logChoice(currentExperiment, selection) {
 
 	dataLog.push([
 		'choice',
@@ -121,7 +62,7 @@ function logChoice(selection) {
 
 }
 
-function logMain() {
+function logMain(currentExperiment) {
 
 	dataLog.push([
 		'main',
