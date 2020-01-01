@@ -37,7 +37,9 @@ function clickOnMain () {
 	index = -1;
 	for (const image of choiceImages) {
 		index++;
-		image.setAttribute('onclick', 'logChoice(currentExperiment, ' + index + ');displayNext();');
+		mainImageLink = document.getElementById('mainImageLink');
+		correct = mainImageLink.getAttribute('data-correct');
+		image.setAttribute('onclick', 'logChoice(currentExperiment, ' + correct + ', ' + index + ');displayNext();');
 	}
 
 }
@@ -49,7 +51,7 @@ function clearDisplay() {
 	}
 }
 
-function logChoice(currentExperiment, selection) {
+function logChoice(currentExperiment, mainImagePosition, selection) {
 
 	dataLog.push([
 		'choice',

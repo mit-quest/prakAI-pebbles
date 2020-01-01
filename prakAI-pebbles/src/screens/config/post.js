@@ -1,7 +1,6 @@
 console.log("begin config/post.js");
 
 resetPreview();
-sessionStorage.setItem("allData", '[]');
 
 backgroundColorPicker = document.getElementById('backgroundColorPicker');
 backgroundColor = backgroundColorPicker.value;

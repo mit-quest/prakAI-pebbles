@@ -16,11 +16,12 @@ showImages.showMain = function(experiment) {
 	displaySetting = experiment["displaySetting"];
 	mainImage = experiment["mainImage"];
 	images = experiment["images"];
+	mainImagePosition = images.indexOf(mainImage);
 
 	displays[displaySetting]();
 	mainImageHTML = document.getElementById('mainImageTD');
 	mainImageHTML.innerHTML = '\
-		<a href="#" id="mainImageLink">\
+		<a href="#" id="mainImageLink" data-correct="' + mainImagePosition + '">\
 			<img class="experimentImage" src="' + mainImage + '" alt="">\
 		</a>';
 

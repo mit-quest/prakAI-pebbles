@@ -25,6 +25,10 @@ function returnToConfig() {
 	if (userInput !== undefined) {
 		console.log(userInput);
 		fs.writeFileSync(userInput, JSON.stringify(dataLog), 'utf-8');
+		mainWindow.setMenuBarVisibility(true);
+		mainWindow.setFullScreen(false);
+		let content = path.join(app.getAppPath(), 'src', 'screens', 'config', 'index.html');
+		mainWindow.loadURL(content);
 	} else {
 		messageOptions = {
 			message: 'You did not save the data, are you sure you want to proceed?',
@@ -33,6 +37,7 @@ function returnToConfig() {
 		};
 		userInput = dialog.showMessageBoxSync(mainWindow, messageOptions);
 		if (userInput == 0) {
+			sessionStorage.setItem("dataLog", '');
 			mainWindow.setMenuBarVisibility(true);
 			mainWindow.setFullScreen(false);
 			let content = path.join(app.getAppPath(), 'src', 'screens', 'config', 'index.html');
