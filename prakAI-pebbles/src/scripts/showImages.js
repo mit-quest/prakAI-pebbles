@@ -11,9 +11,29 @@ displays['2'] = templates.display2;
 console.log(templates);
 console.log(displays);
 
+showImages.hideMain = function () {
+
+	// mainImageLink = document.getElementById('mainImageLink');
+	// mainImageLink.innerHTML = '<img class="experimentImage" src="../../images/noise.gif" alt="">';
+
+	// var start = Date.now();
+    // now = start;
+    // while (now - start < 3000) {
+    //   now = Date.now();
+	// }
+	
+	mainImageTD = document.getElementById('mainImageTD');
+	mainImageTD.setAttribute('style','display: none;');
+	
+}
+
 showImages.showMain = function(experiment) {
 
 	displaySetting = experiment["displaySetting"];
+	if (displaySetting == undefined) {
+		displaysetting = '1';
+	}
+
 	mainImage = experiment["mainImage"];
 	images = experiment["images"];
 	mainImagePosition = images.indexOf(mainImage);

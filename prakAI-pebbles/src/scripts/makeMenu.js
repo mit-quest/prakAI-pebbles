@@ -37,7 +37,10 @@ exports.makeMenu = function () {
 
 				{ type: 'separator' },
 
-				isMac ? { role: 'close' } : { role: 'quit' }
+				{ 
+					role: 'quit',
+					accelerator: 'Alt+x',
+				}
 			]
 		},
 		{

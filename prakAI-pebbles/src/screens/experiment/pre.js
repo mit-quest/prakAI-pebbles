@@ -12,6 +12,7 @@ let mainContent, choicesContent;
 
 let showImages = require('../../scripts/showImages.js');
 let showMain = showImages.functions.showMain;
+let hideMain = showImages.functions.hideMain;
 let showChoices = showImages.functions.showChoices;
 let setAppBackground = showImages.functions.setAppBackground;
 let refreshStyling = showImages.functions.refreshStyling;
@@ -32,6 +33,7 @@ function displayNext() {
 function clickOnMain () {
 	logMain(currentExperiment);
 	playSound("choiceSound");
+	hideMain();
 	showChoices();
 	choiceImages = document.getElementsByClassName('expImageLink');
 	index = -1;
