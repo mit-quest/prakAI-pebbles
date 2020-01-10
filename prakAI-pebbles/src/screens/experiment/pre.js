@@ -49,6 +49,7 @@ function clickOnMain () {
 	targetElement = document.body;
 	targetElement.appendChild(noiseDIV);
 
+	noiseDuration = parseFloat(sessionStorage.getItem('noiseDuration'));
 	// wait 2 seconds
 	setTimeout(() => {
 		//kill noise
@@ -58,7 +59,7 @@ function clickOnMain () {
 		for (const image of expImages) {
 			image.style.visibility = 'visible';
 		}
-	}, 2000);
+	}, noiseDuration);
 
 	// activate choices
 	choiceImages = document.getElementsByClassName('expImageLink');

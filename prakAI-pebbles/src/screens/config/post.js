@@ -38,6 +38,15 @@ heightPicker.oninput = function(ev) {
   refreshStyling();
 } 
 
+noiseDurationPicker = document.getElementById('noiseDurationPicker');
+noiseDurationPicker.oninput = function(ev) {
+  sessionStorage.setItem("noiseDuration", ev.target.value);
+  refreshStyling();
+} 
+
+
+
+
 backgroundColor = sessionStorage.getItem("backgroundColor");
 
 if (backgroundColor == null) {
@@ -90,6 +99,15 @@ if (height == null) {
 	sessionStorage.setItem("height", height);
 } else {
 	heightPicker.value = height;
+}
+
+noiseDuration = sessionStorage.getItem("noiseDuration");
+
+if (noiseDuration == null) {
+	noiseDuration = noiseDurationPicker.value;
+	sessionStorage.setItem("noiseDuration", noiseDuration);
+} else {
+	noiseDurationPicker.value = noiseDuration;
 }
 
 displayCachedExperiment();

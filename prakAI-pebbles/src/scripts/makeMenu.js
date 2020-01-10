@@ -27,7 +27,10 @@ exports.makeMenu = function () {
 			label: 'File',
 			submenu: [
 
-				{ role: 'toggledevtools' },
+				{ 
+					role: 'toggledevtools',
+					accelerator: 'Alt+d'
+				},
 
 				{ type: 'separator' },
 
