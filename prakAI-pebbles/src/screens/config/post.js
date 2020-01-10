@@ -20,9 +20,21 @@ sizePicker.oninput = function(ev) {
 	refreshStyling();
 } 
 
-spacingPicker = document.getElementById('spacingPicker');
-spacingPicker.oninput = function(ev) {
-  sessionStorage.setItem("spacing", ev.target.value);
+vSpacingPicker = document.getElementById('vSpacingPicker');
+vSpacingPicker.oninput = function(ev) {
+  sessionStorage.setItem("vSpacing", ev.target.value);
+  refreshStyling();
+} 
+
+hSpacingPicker = document.getElementById('hSpacingPicker');
+hSpacingPicker.oninput = function(ev) {
+  sessionStorage.setItem("hSpacing", ev.target.value);
+  refreshStyling();
+} 
+
+heightPicker = document.getElementById('heightPicker');
+heightPicker.oninput = function(ev) {
+  sessionStorage.setItem("height", ev.target.value);
   refreshStyling();
 } 
 
@@ -53,13 +65,31 @@ if (size == null) {
 	sizePicker.value = size;
 }
 
-spacing = sessionStorage.getItem("spacing");
+vSpacing = sessionStorage.getItem("vSpacing");
 
-if (spacing == null) {
-	spacing = spacingPicker.value;
-	sessionStorage.setItem("spacing", spacing);
+if (vSpacing == null) {
+	vSpacing = vSpacingPicker.value;
+	sessionStorage.setItem("vSpacing", vSpacing);
 } else {
-	spacingPicker.value = spacing;
+	vSpacingPicker.value = vSpacing;
+}
+
+hSpacing = sessionStorage.getItem("hSpacing");
+
+if (hSpacing == null) {
+	hSpacing = hSpacingPicker.value;
+	sessionStorage.setItem("hSpacing", hSpacing);
+} else {
+	hSpacingPicker.value = hSpacing;
+}
+
+height = sessionStorage.getItem("height");
+
+if (height == null) {
+	height = heightPicker.value;
+	sessionStorage.setItem("height", height);
+} else {
+	heightPicker.value = height;
 }
 
 displayCachedExperiment();

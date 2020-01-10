@@ -1,6 +1,6 @@
 console.log("begin config/pre.js");
 
-const { dialog, getCurrentWindow, app } = require('electron').remote;
+const { dialog, getCurrentWindow, getSize, app } = require('electron').remote;
 const path = require('path');
 
 let leftDiv, rightDiv;
@@ -69,6 +69,65 @@ function loadDirectoryOfExperiments() {
 
 }
 
+function displayPreview(allData, targetElement) {
+	
+	currentExperiment = -1;
+
+	for (const experiment of allData) {
+		
+		currentExperiment++;
+
+		displaySetting = '1';
+		mainImage = experiment["mainImage"];
+		images = experiment["images"];
+		mainImagePosition = images.indexOf(mainImage);
+
+		previewTextHTML = document.createElement('div');
+		
+		previewTextHTML.innerHTML = '<p>Experiment #' + 
+			currentExperiment + 
+			': displaySetting=' + 
+			displaySetting.toString() + 
+			', correct match at position #' +
+			mainImagePosition.toString() +
+			'.</p>';
+
+		targetElement.appendChild(previewTextHTML);
+
+		experimentTableHTML = document.createElement('div');
+		experimentTableHTML.setAttribute('id', 'experimentTable');
+		// create mainImageDIV and expImageDivs
+		experimentTableHTML.innerHTML = '\
+			<div id="mainImageDIV" class="" style="width: 50px;">1</div>\
+			\
+			<div id="expImageDIV-1" class="expImageDIV " style="width: 35px;">2</div>\
+			<div id="expImageDIV-2" class="expImageDIV " style="width: 35px;">3</div>\
+			<div id="expImageDIV-3" class="expImageDIV " style="width: 35px;">4</div>\
+			<div id="expImageDIV-4" class="expImageDIV " style="width: 35px;">5</div>\
+			<div id="expImageDIV-5" class="expImageDIV " style="width: 35px;">6</div>\
+			<div id="expImageDIV-6" class="expImageDIV " style="width: 35px;">7</div>\
+		';
+		targetElement.appendChild(experimentTableHTML);
+
+		showMain(experiment);
+		// show choices
+		expImages = document.getElementsByClassName('expImageDIV');
+		for (const image of expImages) {
+			image.style.visibility = 'visible';
+		}
+
+		experimentTableHTML.setAttribute('id', '');
+		mainImageHTML = document.getElementById('mainImageDIV');
+		mainImageHTML.setAttribute('id', '');	
+		expImages = document.getElementsByClassName('expImageDIV');
+		for (const elem of expImages) {
+			elem.setAttribute('id', '');
+		}
+
+	}
+
+}
+
 function resetPreview() {
 	targetElement = document.getElementById("experimentPreviewList");		
 	while (targetElement.lastChild) {
@@ -94,50 +153,6 @@ function validateAndBegin() {
 	} else {
 		alert("you haven't loaded a valid config directory");
 	}
-}
-
-function displayPreview(allData, targetElement) {
-	
-	currentExperiment = -1;
-
-	for (const experiment of allData) {
-		
-		currentExperiment++;
-
-		displaySetting = experiment["displaySetting"];
-		mainImage = experiment["mainImage"];
-		images = experiment["images"];
-		mainImagePosition = images.indexOf(mainImage);
-
-		previewTextHTML = document.createElement('div');
-		
-		previewTextHTML.innerHTML = '<p>Experiment #' + 
-			currentExperiment + 
-			': displaySetting=' + 
-			JSON.stringify(displaySetting) + 
-			', correct match at position #' +
-			JSON.stringify(mainImagePosition) +
-			'.</p>';
-
-		targetElement.appendChild(previewTextHTML);
-
-		experimentTableHTML = document.createElement('table');
-		experimentTableHTML.setAttribute('id', 'experimentTable');
-		targetElement.appendChild(experimentTableHTML);
-
-		showMain(experiment);
-		showChoices(experiment);
-
-		experimentTableHTML.setAttribute('id', '');
-		mainImageHTML = document.getElementById('mainImageTD');
-		mainImageHTML.setAttribute('id', '');	
-		expImages = document.getElementsByClassName('expImageTD');
-		for (const elem of expImages) {
-			elem.setAttribute('id', '');
-		}
-
-	}
-
 }
 
 function validDataQ(data) {

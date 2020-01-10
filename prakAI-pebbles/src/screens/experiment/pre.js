@@ -12,29 +12,55 @@ let mainContent, choicesContent;
 
 let showImages = require('../../scripts/showImages.js');
 let showMain = showImages.functions.showMain;
-let hideMain = showImages.functions.hideMain;
-let showChoices = showImages.functions.showChoices;
 let setAppBackground = showImages.functions.setAppBackground;
 let refreshStyling = showImages.functions.refreshStyling;
 
-function displayNext() {
+function displayNext () {
 	currentExperiment++;
 	if (currentExperiment > allDataLength - 1) {
 		displayEnd([]);
 	} else {
-		clearDisplay();
 		playSound('mainSound');
 		showMain(allData[currentExperiment]);
-		mainImage = document.getElementById('mainImageLink');
-		mainImage.setAttribute('onclick', 'clickOnMain();');
+		mainImageLink = document.getElementById('mainImageLink');
+		mainImageLink.setAttribute('onclick', 'clickOnMain();')
 	}
 }
 
 function clickOnMain () {
 	logMain(currentExperiment);
 	playSound("choiceSound");
-	hideMain();
-	showChoices();
+
+	// hide main
+	mainImageDIV = document.getElementById('mainImageDIV');
+	mainImageDIV.style.visibility = 'hidden';
+	
+	// show noise
+	noiseDIV = document.createElement('div');
+	noiseDIV.style.position = 'absolute';
+	noiseDIV.style.top = '0px';
+	noiseDIV.style.left = '0px';
+	noiseDIV.style.width = '3000px';
+	noiseDIV.style.height = '3000px';
+	noiseDIV.style.zIndex = '5';
+	noiseDIV.class = '';
+	noiseDIV.innerHTML = '<img style="width: 100%; height: 100%;" src="../../images/noise.gif" alt="">';
+
+	targetElement = document.body;
+	targetElement.appendChild(noiseDIV);
+
+	// wait 2 seconds
+	setTimeout(() => {
+		//kill noise
+		noiseDIV.parentNode.removeChild(noiseDIV);
+		// show choices
+		expImages = document.getElementsByClassName('expImageDIV');
+		for (const image of expImages) {
+			image.style.visibility = 'visible';
+		}
+	}, 2000);
+
+	// activate choices
 	choiceImages = document.getElementsByClassName('expImageLink');
 	index = -1;
 	for (const image of choiceImages) {
@@ -46,14 +72,7 @@ function clickOnMain () {
 
 }
 
-function clearDisplay() {
-	experimentTable = document.getElementById('experimentTable');
-	while (experimentTable.lastChild) {
-		experimentTable.removeChild(experimentTable.lastChild);
-	}
-}
-
-function logChoice(currentExperiment, mainImagePosition, selection) {
+function logChoice (currentExperiment, mainImagePosition, selection) {
 
 	dataLog.push([
 		'choice',
@@ -66,7 +85,7 @@ function logChoice(currentExperiment, mainImagePosition, selection) {
 
 }
 
-function logMain(currentExperiment) {
+function logMain (currentExperiment) {
 
 	dataLog.push([
 		'main',
@@ -76,7 +95,7 @@ function logMain(currentExperiment) {
 
 }
 
-function displayEnd(data) {
+function displayEnd (data) {
 
 	// Save dataLog into session storage
 	sessionStorage.setItem("dataLog", JSON.stringify(dataLog));
