@@ -36,13 +36,13 @@ columnL = (mainImageX - hSpacing).toString() + 'px';
 columnC = (mainImageX).toString() + 'px';
 columnR = (mainImageX + hSpacing).toString() + 'px';
 
-rowT = mainImageY.toString() + 'px';
-rowB = (mainImageY + vSpacing).toString() + 'px';
+rowT = '0px';
+rowB = (0 + vSpacing).toString() + 'px';
 
 mainImageDIV = document.getElementById('mainImageDIV');
 mainImageDIV.style.zIndex = '1';
 mainImageDIV.style.position = 'absolute';
-mainImageDIV.style.top = rowT;
+mainImageDIV.style.top = mainImageY.toString() + 'px';
 mainImageDIV.style.left = columnC;
 mainImageDIV.style.width = size.toString() + 'px';
 

@@ -1,16 +1,5 @@
 let showImages = {};
 
-const { app } = require('electron').remote;
-const path = require('path');
-
-displayPath = path.join(app.getAppPath(), 'src', 'scripts', 'experimentDisplays');
-let templates = require(displayPath).templates;
-displays = {};
-displays['1'] = templates.display1;
-displays['2'] = templates.display2;
-console.log(templates);
-console.log(displays);
-
 showImages.showMain = function(experiment) {
 
 	mainImage = experiment["mainImage"];

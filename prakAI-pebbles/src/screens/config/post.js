@@ -44,6 +44,12 @@ noiseDurationPicker.oninput = function(ev) {
   refreshStyling();
 } 
 
+blankDurationPicker = document.getElementById('blankDurationPicker');
+blankDurationPicker.oninput = function(ev) {
+  sessionStorage.setItem("blankDuration", ev.target.value);
+  refreshStyling();
+} 
+
 
 
 
@@ -108,6 +114,15 @@ if (noiseDuration == null) {
 	sessionStorage.setItem("noiseDuration", noiseDuration);
 } else {
 	noiseDurationPicker.value = noiseDuration;
+}
+
+blankDuration = sessionStorage.getItem("blankDuration");
+
+if (blankDuration == null) {
+	blankDuration = blankDurationPicker.value;
+	sessionStorage.setItem("blankDuration", blankDuration);
+} else {
+	blankDurationPicker.value = blankDuration;
 }
 
 displayCachedExperiment();

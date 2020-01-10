@@ -21,9 +21,18 @@ function displayNext () {
 		displayEnd([]);
 	} else {
 		playSound('mainSound');
-		showMain(allData[currentExperiment]);
-		mainImageLink = document.getElementById('mainImageLink');
-		mainImageLink.setAttribute('onclick', 'clickOnMain();')
+		//hide choices
+		expImages = document.getElementsByClassName('expImageDIV');
+		for (const image of expImages) {
+			image.style.visibility = 'hidden';
+		}
+		//wait blankDuration
+		blankDuration = parseFloat(sessionStorage.getItem('blankDuration'));
+		setTimeout(() => {
+			showMain(allData[currentExperiment]);
+			mainImageLink = document.getElementById('mainImageLink');
+			mainImageLink.setAttribute('onclick', 'clickOnMain();')
+		}, blankDuration);
 	}
 }
 
