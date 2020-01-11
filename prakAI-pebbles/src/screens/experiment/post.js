@@ -27,22 +27,22 @@ if (size % 2 == 1) {
 
 hSpacing = parseFloat(sessionStorage.getItem('hSpacing'));
 vSpacing = parseFloat(sessionStorage.getItem('vSpacing'));
-height = parseFloat(sessionStorage.getItem('height'));
+mainImageHeight = parseFloat(sessionStorage.getItem('mainImageHeight'));
+imageGridHeight = parseFloat(sessionStorage.getItem('imageGridHeight'));
 
 mainImageX = centerW - size/2;
-mainImageY = height;
 
 columnL = (mainImageX - hSpacing).toString() + 'px';
 columnC = (mainImageX).toString() + 'px';
 columnR = (mainImageX + hSpacing).toString() + 'px';
 
-rowT = '0px';
-rowB = (0 + vSpacing).toString() + 'px';
+rowT = imageGridHeight.toString() + 'px';
+rowB = (imageGridHeight + vSpacing).toString() + 'px';
 
 mainImageDIV = document.getElementById('mainImageDIV');
 mainImageDIV.style.zIndex = '1';
 mainImageDIV.style.position = 'absolute';
-mainImageDIV.style.top = mainImageY.toString() + 'px';
+mainImageDIV.style.top = mainImageHeight.toString() + 'px';
 mainImageDIV.style.left = columnC;
 mainImageDIV.style.width = size.toString() + 'px';
 

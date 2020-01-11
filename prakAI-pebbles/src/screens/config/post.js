@@ -32,9 +32,15 @@ hSpacingPicker.oninput = function(ev) {
   refreshStyling();
 } 
 
-heightPicker = document.getElementById('heightPicker');
-heightPicker.oninput = function(ev) {
-  sessionStorage.setItem("height", ev.target.value);
+mainImageHeightPicker = document.getElementById('mainImageHeightPicker');
+mainImageHeightPicker.oninput = function(ev) {
+  sessionStorage.setItem("mainImageHeight", ev.target.value);
+  refreshStyling();
+} 
+
+imageGridHeightPicker = document.getElementById('imageGridHeightPicker');
+imageGridHeightPicker.oninput = function(ev) {
+  sessionStorage.setItem("imageGridHeight", ev.target.value);
   refreshStyling();
 } 
 
@@ -54,7 +60,6 @@ blankDurationPicker.oninput = function(ev) {
 
 
 backgroundColor = sessionStorage.getItem("backgroundColor");
-
 if (backgroundColor == null) {
 	backgroundColor = backgroundColorPicker.value;
 	sessionStorage.setItem("backgroundColor", backgroundColor);
@@ -63,7 +68,6 @@ if (backgroundColor == null) {
 }
 
 fontColor = sessionStorage.getItem("fontColor");
-
 if (fontColor == null) {
 	fontColor = fontColorPicker.value;
 	sessionStorage.setItem("fontColor", fontColor);
@@ -72,7 +76,6 @@ if (fontColor == null) {
 }
 
 size = sessionStorage.getItem("size");
-
 if (size == null) {
 	size = sizePicker.value;
 	sessionStorage.setItem("size", size);
@@ -81,7 +84,6 @@ if (size == null) {
 }
 
 vSpacing = sessionStorage.getItem("vSpacing");
-
 if (vSpacing == null) {
 	vSpacing = vSpacingPicker.value;
 	sessionStorage.setItem("vSpacing", vSpacing);
@@ -90,7 +92,6 @@ if (vSpacing == null) {
 }
 
 hSpacing = sessionStorage.getItem("hSpacing");
-
 if (hSpacing == null) {
 	hSpacing = hSpacingPicker.value;
 	sessionStorage.setItem("hSpacing", hSpacing);
@@ -98,17 +99,23 @@ if (hSpacing == null) {
 	hSpacingPicker.value = hSpacing;
 }
 
-height = sessionStorage.getItem("height");
-
-if (height == null) {
-	height = heightPicker.value;
-	sessionStorage.setItem("height", height);
+mainImageHeight = sessionStorage.getItem("mainImageHeight");
+if (mainImageHeight == null) {
+	mainImageHeight = mainImageHeightPicker.value;
+	sessionStorage.setItem("mainImageHeight", mainImageHeight);
 } else {
-	heightPicker.value = height;
+	mainImageHeightPicker.value = mainImageHeight;
+}
+
+imageGridHeight = sessionStorage.getItem("imageGridHeight");
+if (imageGridHeight == null) {
+	imageGridHeight = imageGridHeightPicker.value;
+	sessionStorage.setItem("imageGridHeight", imageGridHeight);
+} else {
+	imageGridHeightPicker.value = imageGridHeight;
 }
 
 noiseDuration = sessionStorage.getItem("noiseDuration");
-
 if (noiseDuration == null) {
 	noiseDuration = noiseDurationPicker.value;
 	sessionStorage.setItem("noiseDuration", noiseDuration);
@@ -117,7 +124,6 @@ if (noiseDuration == null) {
 }
 
 blankDuration = sessionStorage.getItem("blankDuration");
-
 if (blankDuration == null) {
 	blankDuration = blankDurationPicker.value;
 	sessionStorage.setItem("blankDuration", blankDuration);
