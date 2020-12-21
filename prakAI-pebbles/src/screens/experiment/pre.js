@@ -12,6 +12,11 @@ let mainContent, choicesContent;
 
 let showImages = require('../../scripts/showImages.js');
 let showMain = showImages.functions.showMain;
+dataLog.push([
+	'show-main',
+	Date.now()
+]);	
+
 let setAppBackground = showImages.functions.setAppBackground;
 let refreshStyling = showImages.functions.refreshStyling;
 
