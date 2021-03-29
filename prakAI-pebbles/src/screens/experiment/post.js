@@ -47,12 +47,12 @@ rowB = (imageGridHeight + vSpacing).toString() + 'px';
 radius = 200; // eventually we should make this an input variable
 length = 6;
 // TODO: work on randomization feature
-// let list = [...Array(length).keys()]
+let list = [...Array(length).keys()]
 // let random_list = list.sort(() => Math.random() - 0.5)
 
 // TODO: not completely center right now, need to factor in size of the image
 let x_coords = Array.from(list, x => 
-                          (Math.round(radius * Math.cos(x * 2 * Math.PI / length) + centerW)).toString() + 'px');
+                          (Math.round(radius * Math.cos(x * 2 * Math.PI / length) + mainImageX)).toString() + 'px');
 let y_coords = Array.from(list, y => 
                           (Math.round(radius * Math.sin(y * 2 * Math.PI / length) + centerH)).toString() + "px");
 myConsole.log(x_coords);
