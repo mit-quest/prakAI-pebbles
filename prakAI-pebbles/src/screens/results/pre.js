@@ -28,7 +28,7 @@ function returnToConfig() {
 		mainWindow.setMenuBarVisibility(true);
 		mainWindow.setFullScreen(false);
 		let content = path.join(app.getAppPath(), 'src', 'screens', 'config', 'index.html');
-		mainWindow.loadURL(content);
+		mainWindow.loadFile(content);
 	} else {
 		messageOptions = {
 			message: 'You did not save the data, are you sure you want to proceed?',
@@ -41,7 +41,7 @@ function returnToConfig() {
 			mainWindow.setMenuBarVisibility(true);
 			mainWindow.setFullScreen(false);
 			let content = path.join(app.getAppPath(), 'src', 'screens', 'config', 'index.html');
-			mainWindow.loadURL(content);
+			mainWindow.loadFile(content);
 		}
 	}
 

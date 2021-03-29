@@ -121,7 +121,7 @@ function displayEnd (data) {
 	//start screen 
 	let mainWindow = getCurrentWindow();
 	let content = path.join(app.getAppPath(), 'src', 'screens', 'results', 'index.html');
-	mainWindow.loadURL(content);
+	mainWindow.loadFile(content);
 
 }
 

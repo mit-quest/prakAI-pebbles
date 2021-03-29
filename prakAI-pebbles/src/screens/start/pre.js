@@ -7,6 +7,6 @@ function startExperiment() {
 
 	let mainWindow = getCurrentWindow();
 	let content = path.join(app.getAppPath(), 'src', 'screens', 'experiment', 'index.html');
-	mainWindow.loadURL(content);
+	mainWindow.loadFile(content);
 
 }

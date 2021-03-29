@@ -149,7 +149,7 @@ function validateAndBegin() {
 		mainWindow.setMenuBarVisibility(false);
 		mainWindow.setFullScreen(true);
 		let content = path.join(app.getAppPath(), 'src', 'screens', 'start', 'index.html');
-		mainWindow.loadURL(content);
+		mainWindow.loadFile(content);
 	} else {
 		alert("you haven't loaded a valid config directory");
 	}

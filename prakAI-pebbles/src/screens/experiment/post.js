@@ -1,3 +1,7 @@
+// output to terminal solely for debugging purposes
+var nodeConsole = require('console');
+var myConsole = new nodeConsole.Console(process.stdout, process.stderr);
+
 console.log("begin experiment/post.js");
 
 setAppBackground();
@@ -39,6 +43,16 @@ columnR = (mainImageX + hSpacing).toString() + 'px';
 rowT = imageGridHeight.toString() + 'px';
 rowB = (imageGridHeight + vSpacing).toString() + 'px';
 
+
+radius = 200; // eventually we should make this an input variable
+length = 6;
+const x_coords = Array.from([...Array(length).keys()], x => 
+                          (Math.round(radius * Math.cos(x * 2 * Math.PI / length) + centerW)).toString() + 'px');
+const y_coords = Array.from([...Array(length).keys()], y => 
+                          (Math.round(radius * Math.sin(y * 2 * Math.PI / length) + centerH)).toString() + "px");
+myConsole.log(x_coords);
+myConsole.log(y_coords);
+
 mainImageDIV = document.getElementById('mainImageDIV');
 mainImageDIV.style.zIndex = '1';
 mainImageDIV.style.position = 'absolute';
@@ -48,38 +62,38 @@ mainImageDIV.style.width = size.toString() + 'px';
 
 expImage1 = document.getElementById('expImageDIV-1');
 expImage1.style.position = 'absolute';
-expImage1.style.top = rowT;
-expImage1.style.left = columnL;
+expImage1.style.top = y_coords[0];
+expImage1.style.left = x_coords[0];
 expImage1.style.width = size.toString() + 'px';
 
 expImage2 = document.getElementById('expImageDIV-2');
 expImage2.style.position = 'absolute';
-expImage2.style.top = rowT;
-expImage2.style.left = columnC;
+expImage2.style.top = y_coords[1]; //rowT;
+expImage2.style.left = x_coords[1]; //columnC;
 expImage2.style.width = size.toString() + 'px';
 
 expImage3 = document.getElementById('expImageDIV-3');
 expImage3.style.position = 'absolute';
-expImage3.style.top = rowT;
-expImage3.style.left = columnR;
+expImage3.style.top = y_coords[2];
+expImage3.style.left = x_coords[2];
 expImage3.style.width = size.toString() + 'px';
 
 expImage4 = document.getElementById('expImageDIV-4');
 expImage4.style.position = 'absolute';
-expImage4.style.top = rowB;
-expImage4.style.left = columnL;
+expImage4.style.top = y_coords[3];
+expImage4.style.left = x_coords[3];
 expImage4.style.width = size.toString() + 'px';
 
 expImage5 = document.getElementById('expImageDIV-5');
 expImage5.style.position = 'absolute';
-expImage5.style.top = rowB;
-expImage5.style.left = columnC;
+expImage5.style.top = y_coords[4];
+expImage5.style.left = x_coords[4];
 expImage5.style.width = size.toString() + 'px';
 
 expImage6 = document.getElementById('expImageDIV-6');
 expImage6.style.position = 'absolute';
-expImage6.style.top = rowB;
-expImage6.style.left = columnR;
+expImage6.style.top = y_coords[5];
+expImage6.style.left = x_coords[5];
 expImage6.style.width = size.toString() + 'px';
 
 // display images or send to results screen
