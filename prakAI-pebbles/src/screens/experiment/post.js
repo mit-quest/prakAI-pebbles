@@ -35,6 +35,7 @@ mainImageHeight = parseFloat(sessionStorage.getItem('mainImageHeight'));
 imageGridHeight = parseFloat(sessionStorage.getItem('imageGridHeight'));
 
 mainImageX = centerW - size/2;
+mainImageY = centerH - Math.floor(mainImageHeight /2);
 
 columnL = (mainImageX - hSpacing).toString() + 'px';
 columnC = (mainImageX).toString() + 'px';
@@ -46,15 +47,13 @@ rowB = (imageGridHeight + vSpacing).toString() + 'px';
 // Set the coordinates for where the image should go
 radius = 200; // eventually we should make this an input variable
 length = 6;
-// TODO: work on randomization feature
+// TODO: work on randomization feature, note: this will probably have to be done outside of post.js
 let list = [...Array(length).keys()]
 // let random_list = list.sort(() => Math.random() - 0.5)
-
-// TODO: not completely center right now, need to factor in size of the image
 let x_coords = Array.from(list, x => 
                           (Math.round(radius * Math.cos(x * 2 * Math.PI / length) + mainImageX)).toString() + 'px');
 let y_coords = Array.from(list, y => 
-                          (Math.round(radius * Math.sin(y * 2 * Math.PI / length) + centerH)).toString() + "px");
+                          (Math.round(radius * Math.sin(y * 2 * Math.PI / length) + mainImageY)).toString() + "px");
 myConsole.log(x_coords);
 myConsole.log(y_coords);
 
