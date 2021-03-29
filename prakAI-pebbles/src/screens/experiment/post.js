@@ -45,7 +45,7 @@ rowT = imageGridHeight.toString() + 'px';
 rowB = (imageGridHeight + vSpacing).toString() + 'px';
 
 // Set the coordinates for where the image should go
-radius = 200; // eventually we should make this an input variable
+radius = 283; // eventually we should make this an input variable, currently set to 400sqrt(2)/2
 length = 6;
 // TODO: work on randomization feature, note: this will probably have to be done outside of post.js
 let list = [...Array(length).keys()]
@@ -60,8 +60,9 @@ myConsole.log(y_coords);
 mainImageDIV = document.getElementById('mainImageDIV');
 mainImageDIV.style.zIndex = '1';
 mainImageDIV.style.position = 'absolute';
-mainImageDIV.style.top = mainImageHeight.toString() + 'px';
-mainImageDIV.style.left = columnC;
+// Changed image to be displayed in center
+mainImageDIV.style.top = mainImageY.toString() + 'px'; // mainImageHeight.toString() + 'px';
+mainImageDIV.style.left = mainImageX.toString() + 'px'; // columnC;
 mainImageDIV.style.width = size.toString() + 'px';
 
 expImage1 = document.getElementById('expImageDIV-1');
@@ -100,12 +101,12 @@ expImage6.style.top = y_coords[5];
 expImage6.style.left = x_coords[5];
 expImage6.style.width = size.toString() + 'px';
 
-// display images or send to results screen
-displayNext();
-
 sounds = ['mainSound', 'choiceSound'];
 sounds.forEach(sound => {
 	var soundElem = document.getElementById(sound);
 	soundElem.preload = "auto"; 
 });
+
+// display images or send to results screen
+displayNext();
 

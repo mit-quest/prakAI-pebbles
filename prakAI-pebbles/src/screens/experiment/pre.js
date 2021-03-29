@@ -26,15 +26,26 @@ function displayNext () {
 		displayEnd([]);
 	} else {
 		playSound('mainSound');
+
+		//show a cross before displaying the image
+		waitScreen = document.getElementById('waitscreen');
+		document.getElementById('cross').style.filter="invert(100%)";
+		waitScreen.style.visibility = 'visible';
+		waitScreen.style.backgroundColor = 'coral'; // TODO: make this customizable
+		
 		//hide choices
+		document.getElementById("mainImageDIV").style.visibility = 'hidden';
 		expImages = document.getElementsByClassName('expImageDIV');
 		for (const image of expImages) {
 			image.style.visibility = 'hidden';
 		}
+
 		//wait blankDuration
 		blankDuration = parseFloat(sessionStorage.getItem('blankDuration'));
 		setTimeout(() => {
+			waitScreen.style.visibility = 'hidden';
 			showMain(allData[currentExperiment]);
+			// TODO: change this from click to timed
 			mainImageLink = document.getElementById('mainImageLink');
 			mainImageLink.setAttribute('onclick', 'clickOnMain();')
 		}, blankDuration);
