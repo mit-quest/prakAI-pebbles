@@ -21,35 +21,37 @@ let setAppBackground = showImages.functions.setAppBackground;
 let refreshStyling = showImages.functions.refreshStyling;
 
 function displayNext () {
-	currentExperiment++;
-	if (currentExperiment > allDataLength - 1) {
-		displayEnd([]);
-	} else {
-		playSound('mainSound');
+	
+	playSound('mainSound');
 
-		//show a cross before displaying the image
-		waitScreen = document.getElementById('waitscreen');
-		document.getElementById('cross').style.filter="invert(100%)";
-		waitScreen.style.visibility = 'visible';
-		waitScreen.style.backgroundColor = 'coral'; // TODO: make this customizable
-		
-		//hide choices
-		document.getElementById("mainImageDIV").style.visibility = 'hidden';
-		expImages = document.getElementsByClassName('expImageDIV');
-		for (const image of expImages) {
-			image.style.visibility = 'hidden';
-		}
+	//show a cross before displaying the image
+	waitScreen = document.getElementById('waitscreen');
+	document.getElementById('cross').style.filter="invert(100%)";
+	waitScreen.style.visibility = 'visible';
+	// waitScreen.style.backgroundColor = 'coral'; // TODO: make this customizable
 
-		//wait blankDuration
-		blankDuration = parseFloat(sessionStorage.getItem('blankDuration'));
-		setTimeout(() => {
-			waitScreen.style.visibility = 'hidden';
-			showMain(allData[currentExperiment]);
-			// TODO: change this from click to timed
-			mainImageLink = document.getElementById('mainImageLink');
-			mainImageLink.setAttribute('onclick', 'clickOnMain();')
-		}, blankDuration);
+	//hide nextButton
+	document.getElementById("mainImageDIV").style.visibility = 'hidden';
+	expImages = document.getElementsByClassName('expImageDIV');
+	for (const image of expImages) {
+		image.style.visibility = 'hidden';
 	}
+	document.getElementById('nextTrialScreen').style.visibility = 'hidden';
+
+	//wait blankDuration
+	blankDuration = parseFloat(sessionStorage.getItem('blankDuration'));
+	setTimeout(() => {
+		waitScreen.style.visibility = 'hidden';
+		showMain(allData[currentExperiment]);
+		setTimeout(() => {
+			clickOnMain();
+		}, 500); //TODO: make this customizable
+
+		// Use this code if you want to display the options by clicking on the main image
+		// mainImageLink = document.getElementById('mainImageLink');
+		// mainImageLink.setAttribute('onclick', 'clickOnMain();')
+	}, blankDuration);
+	
 }
 
 function clickOnMain () {
@@ -93,9 +95,36 @@ function clickOnMain () {
 		index++;
 		mainImageLink = document.getElementById('mainImageLink');
 		correct = mainImageLink.getAttribute('data-correct');
-		image.setAttribute('onclick', 'logChoice(currentExperiment, ' + correct + ', ' + index + ');displayNext();');
+		image.setAttribute('onclick', 'logChoice(currentExperiment, ' + correct + ', ' + index + '); nextTrial();');
 	}
 
+}
+
+function nextTrial () {
+	currentExperiment++;
+	if (currentExperiment > allDataLength - 1) {
+		displayEnd([]);
+	} else {
+		nextTrialScreen = document.getElementById('nextTrialScreen');
+		nextTrialScreen.style.visibility = 'visible';
+		nextTrialButton = document.getElementById('nextTrialButton');
+		nextTrialButton.setAttribute('ondblclick', 'logNext(currentExperiment); displayNext();');
+
+		//hide choices
+		document.getElementById("mainImageDIV").style.visibility = 'hidden';
+		expImages = document.getElementsByClassName('expImageDIV');
+		for (const image of expImages) {
+			image.style.visibility = 'hidden';
+		}
+	}
+}
+
+function logNext (currentExperiment) {
+	dataLog.push([
+		'start',
+		Date.now(),
+		currentExperiment
+	]);
 }
 
 function logChoice (currentExperiment, mainImagePosition, selection) {

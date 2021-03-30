@@ -107,6 +107,6 @@ sounds.forEach(sound => {
 	soundElem.preload = "auto"; 
 });
 
-// display images or send to results screen
-displayNext();
+// start experiment
+nextTrial();
 
