@@ -21,8 +21,6 @@ let setAppBackground = showImages.functions.setAppBackground;
 let refreshStyling = showImages.functions.refreshStyling;
 
 function displayNext () {
-	
-	playSound('mainSound');
 
 	//show a cross before displaying the image
 	waitScreen = document.getElementById('waitscreen');
@@ -41,6 +39,7 @@ function displayNext () {
 	//wait blankDuration
 	blankDuration = parseFloat(sessionStorage.getItem('blankDuration'));
 	setTimeout(() => {
+		playSound('mainSound');
 		waitScreen.style.visibility = 'hidden';
 		showMain(allData[currentExperiment]);
 		setTimeout(() => {
