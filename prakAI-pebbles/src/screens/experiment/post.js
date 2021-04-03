@@ -45,11 +45,9 @@ rowT = imageGridHeight.toString() + 'px';
 rowB = (imageGridHeight + vSpacing).toString() + 'px';
 
 // Set the coordinates for where the image should go
-radius = 283; // eventually we should make this an input variable, currently set to 400sqrt(2)/2
+radius = 283; // TODO: eventually we should make this an input variable, currently set to 400sqrt(2)/2
 length = 8;
-// TODO: work on randomization feature, note: this will probably have to be done outside of post.js
 let list = [...Array(length).keys()]
-// let random_list = list.sort(() => Math.random() - 0.5)
 let x_coords = Array.from(list, x => 
                           (Math.round(radius * Math.cos(x * 2 * Math.PI / length) + mainImageX)).toString() + 'px');
 let y_coords = Array.from(list, y => 
