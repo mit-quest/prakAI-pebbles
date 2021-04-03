@@ -101,7 +101,7 @@ expImage6.style.top = y_coords[5];
 expImage6.style.left = x_coords[5];
 expImage6.style.width = size.toString() + 'px';
 
-sounds = ['mainSound', 'choiceSound'];
+sounds = ['mainSound', 'choiceSound', 'startSound'];
 sounds.forEach(sound => {
 	var soundElem = document.getElementById(sound);
 	soundElem.preload = "auto"; 

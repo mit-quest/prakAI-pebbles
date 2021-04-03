@@ -26,7 +26,6 @@ function displayNext () {
 	waitScreen = document.getElementById('waitscreen');
 	document.getElementById('cross').style.filter="invert(100%)";
 	waitScreen.style.visibility = 'visible';
-	// waitScreen.style.backgroundColor = 'coral'; // TODO: make this customizable
 
 	//hide nextButton
 	document.getElementById("mainImageDIV").style.visibility = 'hidden';
@@ -107,7 +106,7 @@ function nextTrial () {
 		nextTrialScreen = document.getElementById('nextTrialScreen');
 		nextTrialScreen.style.visibility = 'visible';
 		nextTrialButton = document.getElementById('nextTrialButton');
-		nextTrialButton.setAttribute('ondblclick', 'logNext(currentExperiment); displayNext();');
+		nextTrialButton.setAttribute('ondblclick', 'logNext(currentExperiment); playSound("startSound"); displayNext();');
 
 		//hide choices
 		document.getElementById("mainImageDIV").style.visibility = 'hidden';
