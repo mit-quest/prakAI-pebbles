@@ -46,7 +46,7 @@ rowB = (imageGridHeight + vSpacing).toString() + 'px';
 
 // Set the coordinates for where the image should go
 radius = 283; // eventually we should make this an input variable, currently set to 400sqrt(2)/2
-length = 6;
+length = 8;
 // TODO: work on randomization feature, note: this will probably have to be done outside of post.js
 let list = [...Array(length).keys()]
 // let random_list = list.sort(() => Math.random() - 0.5)
@@ -100,6 +100,18 @@ expImage6.style.position = 'absolute';
 expImage6.style.top = y_coords[5];
 expImage6.style.left = x_coords[5];
 expImage6.style.width = size.toString() + 'px';
+
+expImage7 = document.getElementById('expImageDIV-7');
+expImage7.style.position = 'absolute';
+expImage7.style.top = y_coords[6];
+expImage7.style.left = x_coords[6];
+expImage7.style.width = size.toString() + 'px';
+
+expImage8 = document.getElementById('expImageDIV-8');
+expImage8.style.position = 'absolute';
+expImage8.style.top = y_coords[7];
+expImage8.style.left = x_coords[7];
+expImage8.style.width = size.toString() + 'px';
 
 sounds = ['mainSound', 'choiceSound', 'startSound'];
 sounds.forEach(sound => {

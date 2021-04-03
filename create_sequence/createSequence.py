@@ -17,7 +17,7 @@ fileFormats = ('.png','.jpg')
 images = [f for f in os.listdir(imageDir) if f.endswith(fileFormats)]
 
 # create sequence
-numTrials = int(input("Number of trials:"))
+numTrials = int(input("Number of trials: "))
 print(numTrials)
 expArrangement = []
 for n in range(0, numTrials):
@@ -29,6 +29,6 @@ for n in range(0, numTrials):
 	expArrangement.append(trial)
 
 # write to JSON file
-# Note: this will overwrite the previous sequence generated
-with open("sequence.json", "w") as write_file:
+fileName = input("File name to save as: ")
+with open(fileName, "w") as write_file:
     json.dump(expArrangement, write_file, indent = 4)
