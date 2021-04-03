@@ -35,7 +35,7 @@ mainImageHeight = parseFloat(sessionStorage.getItem('mainImageHeight'));
 imageGridHeight = parseFloat(sessionStorage.getItem('imageGridHeight'));
 
 mainImageX = centerW - size/2;
-mainImageY = centerH - Math.floor(mainImageHeight /2);
+mainImageY = centerH - size/2;
 
 columnL = (mainImageX - hSpacing).toString() + 'px';
 columnC = (mainImageX).toString() + 'px';
