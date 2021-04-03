@@ -106,6 +106,8 @@ function displayPreview(allData, targetElement) {
 			<div id="expImageDIV-4" class="expImageDIV " style="width: 35px;">5</div>\
 			<div id="expImageDIV-5" class="expImageDIV " style="width: 35px;">6</div>\
 			<div id="expImageDIV-6" class="expImageDIV " style="width: 35px;">7</div>\
+			<div id="expImageDIV-7" class="expImageDIV " style="width: 35px;">8</div>\
+			<div id="expImageDIV-8" class="expImageDIV " style="width: 35px;">9</div>\
 		';
 		targetElement.appendChild(experimentTableHTML);
 

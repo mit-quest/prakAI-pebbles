@@ -21,30 +21,38 @@ let setAppBackground = showImages.functions.setAppBackground;
 let refreshStyling = showImages.functions.refreshStyling;
 
 function displayNext () {
-	currentExperiment++;
-	if (currentExperiment > allDataLength - 1) {
-		displayEnd([]);
-	} else {
-		playSound('mainSound');
-		//hide choices
-		expImages = document.getElementsByClassName('expImageDIV');
-		for (const image of expImages) {
-			image.style.visibility = 'hidden';
-		}
-		//wait blankDuration
-		blankDuration = parseFloat(sessionStorage.getItem('blankDuration'));
-		setTimeout(() => {
-			showMain(allData[currentExperiment]);
-			mainImageLink = document.getElementById('mainImageLink');
-			mainImageLink.setAttribute('onclick', 'clickOnMain();')
-		}, blankDuration);
+
+	//show a cross before displaying the image
+	waitScreen = document.getElementById('waitscreen');
+	document.getElementById('cross').style.filter="invert(100%)";
+	waitScreen.style.visibility = 'visible';
+
+	//hide nextButton
+	document.getElementById("mainImageDIV").style.visibility = 'hidden';
+	expImages = document.getElementsByClassName('expImageDIV');
+	for (const image of expImages) {
+		image.style.visibility = 'hidden';
 	}
+	document.getElementById('nextTrialScreen').style.visibility = 'hidden';
+
+	//wait blankDuration
+	blankDuration = parseFloat(sessionStorage.getItem('blankDuration'));
+	setTimeout(() => {
+		playSound('mainSound');
+		waitScreen.style.visibility = 'hidden';
+		showMain(allData[currentExperiment]);
+		setTimeout(() => {
+			clickOnMain();
+		}, 500); //TODO: make this customizable
+
+		// Use this code if you want to display the options by clicking on the main image
+		// mainImageLink = document.getElementById('mainImageLink');
+		// mainImageLink.setAttribute('onclick', 'clickOnMain();')
+	}, blankDuration);
+	
 }
 
 function clickOnMain () {
-	logMain(currentExperiment);
-	playSound("choiceSound");
-
 	// hide main
 	mainImageDIV = document.getElementById('mainImageDIV');
 	mainImageDIV.style.visibility = 'hidden';
@@ -68,7 +76,9 @@ function clickOnMain () {
 	setTimeout(() => {
 		//kill noise
 		noiseDIV.parentNode.removeChild(noiseDIV);
-		// show choices
+		// show choices and play sound
+		logMain(currentExperiment);
+		playSound("choiceSound");
 		expImages = document.getElementsByClassName('expImageDIV');
 		for (const image of expImages) {
 			image.style.visibility = 'visible';
@@ -82,15 +92,41 @@ function clickOnMain () {
 		index++;
 		mainImageLink = document.getElementById('mainImageLink');
 		correct = mainImageLink.getAttribute('data-correct');
-		image.setAttribute('onclick', 'logChoice(currentExperiment, ' + correct + ', ' + index + ');displayNext();');
+		image.setAttribute('onclick', 'logChoice(currentExperiment, ' + correct + ', ' + index + '); nextTrial();');
 	}
 
 }
 
-function logChoice (currentExperiment, mainImagePosition, selection) {
+function nextTrial () {
+	currentExperiment++;
+	if (currentExperiment > allDataLength - 1) {
+		displayEnd([]);
+	} else {
+		nextTrialScreen = document.getElementById('nextTrialScreen');
+		nextTrialScreen.style.visibility = 'visible';
+		nextTrialButton = document.getElementById('nextTrialButton');
+		nextTrialButton.setAttribute('ondblclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
 
+		//hide choices
+		document.getElementById("mainImageDIV").style.visibility = 'hidden';
+		expImages = document.getElementsByClassName('expImageDIV');
+		for (const image of expImages) {
+			image.style.visibility = 'hidden';
+		}
+	}
+}
+
+function logStart (currentExperiment) {
 	dataLog.push([
-		'choice',
+		'Screen 1 - start experiment',
+		Date.now(),
+		currentExperiment
+	]);
+}
+
+function logChoice (currentExperiment, mainImagePosition, selection) {
+	dataLog.push([
+		'Screen 4 - select choice',
 		Date.now(), 
 		currentExperiment, 
 		mainImagePosition, 
@@ -101,9 +137,8 @@ function logChoice (currentExperiment, mainImagePosition, selection) {
 }
 
 function logMain (currentExperiment) {
-
 	dataLog.push([
-		'main',
+		'Screen 4 - display choices',
 		Date.now(), 
 		currentExperiment
 	]);	
