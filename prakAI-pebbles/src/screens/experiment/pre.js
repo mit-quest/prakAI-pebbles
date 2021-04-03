@@ -53,9 +53,6 @@ function displayNext () {
 }
 
 function clickOnMain () {
-	logMain(currentExperiment);
-	playSound("choiceSound");
-
 	// hide main
 	mainImageDIV = document.getElementById('mainImageDIV');
 	mainImageDIV.style.visibility = 'hidden';
@@ -79,7 +76,9 @@ function clickOnMain () {
 	setTimeout(() => {
 		//kill noise
 		noiseDIV.parentNode.removeChild(noiseDIV);
-		// show choices
+		// show choices and play sound
+		logMain(currentExperiment);
+		playSound("choiceSound");
 		expImages = document.getElementsByClassName('expImageDIV');
 		for (const image of expImages) {
 			image.style.visibility = 'visible';
@@ -106,7 +105,7 @@ function nextTrial () {
 		nextTrialScreen = document.getElementById('nextTrialScreen');
 		nextTrialScreen.style.visibility = 'visible';
 		nextTrialButton = document.getElementById('nextTrialButton');
-		nextTrialButton.setAttribute('ondblclick', 'logNext(currentExperiment); playSound("startSound"); displayNext();');
+		nextTrialButton.setAttribute('ondblclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
 
 		//hide choices
 		document.getElementById("mainImageDIV").style.visibility = 'hidden';
@@ -117,18 +116,17 @@ function nextTrial () {
 	}
 }
 
-function logNext (currentExperiment) {
+function logStart (currentExperiment) {
 	dataLog.push([
-		'start',
+		'Screen 1 - start experiment',
 		Date.now(),
 		currentExperiment
 	]);
 }
 
 function logChoice (currentExperiment, mainImagePosition, selection) {
-
 	dataLog.push([
-		'choice',
+		'Screen 4 - select choice',
 		Date.now(), 
 		currentExperiment, 
 		mainImagePosition, 
@@ -139,9 +137,8 @@ function logChoice (currentExperiment, mainImagePosition, selection) {
 }
 
 function logMain (currentExperiment) {
-
 	dataLog.push([
-		'main',
+		'Screen 4 - display choices',
 		Date.now(), 
 		currentExperiment
 	]);	
