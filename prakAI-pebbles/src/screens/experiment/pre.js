@@ -24,7 +24,10 @@ function displayNext () {
 
 	//show a cross before displaying the image
 	waitScreen = document.getElementById('waitscreen');
-	document.getElementById('cross').style.filter="invert(100%)";
+	//invert color of the cross if the app background is dark
+	if (isDark(document.body.style.backgroundColor)) {
+		document.getElementById('cross').style.filter="invert(100%)";
+	}
 	waitScreen.style.visibility = 'visible';
 
 	//hide nextButton
@@ -114,6 +117,14 @@ function nextTrial () {
 			image.style.visibility = 'hidden';
 		}
 	}
+}
+
+function isDark (backgroundColor) {
+	rgb = backgroundColor.replace(/[^\d,]/g, '').split(',');
+	if (parseInt(rgb[0]) + parseInt(rgb[1]) + parseInt(rgb[2]) < 450) {
+		return true;
+	}
+	return false;
 }
 
 function logStart (currentExperiment) {
