@@ -36,19 +36,19 @@ function displayNext () {
 	document.getElementById('nextTrialScreen').style.visibility = 'hidden';
 
 	//wait blankDuration
-	blankDuration = parseFloat(sessionStorage.getItem('blankDuration'));
+	crossDuration = parseFloat(sessionStorage.getItem('crossDuration'));
 	setTimeout(() => {
 		playSound('mainSound');
 		waitScreen.style.visibility = 'hidden';
 		showMain(allData[currentExperiment]);
 		setTimeout(() => {
 			clickOnMain();
-		}, 500); //TODO: make this customizable
+		}, crossDuration); 
 
 		// Use this code if you want to display the options by clicking on the main image
 		// mainImageLink = document.getElementById('mainImageLink');
 		// mainImageLink.setAttribute('onclick', 'clickOnMain();')
-	}, blankDuration);
+	}, crossDuration);
 	
 }
 

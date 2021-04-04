@@ -2,133 +2,131 @@ console.log("begin config/post.js");
 
 resetPreview();
 
-backgroundColorPicker = document.getElementById('backgroundColorPicker');
-backgroundColorPicker.onchange = function(ev) {
-	sessionStorage.setItem("backgroundColor", ev.target.value);
-	refreshStyling();
+document.getElementById('password-button').onclick = function(ev) {
+	submitPassword(ev);
 };
 
-fontColorPicker = document.getElementById('fontColorPicker');
-fontColorPicker.onchange = function(ev) {
-	sessionStorage.setItem("fontColor", ev.target.value);
-	refreshStyling();
-};
+// Timing Parameters
+if (true) {
 
-sizePicker = document.getElementById('sizePicker');
-sizePicker.oninput = function(ev) {
-	sessionStorage.setItem("size", ev.target.value);
-	refreshStyling();
-} 
+	// cross duration
+	crossDurationPicker = document.getElementById('cross-duration-picker');
+	crossDurationPicker.oninput = function(ev) {
+		sessionStorage.setItem("crossDuration", ev.target.value);
+		refreshStyling();
+	} 
+	crossDuration = sessionStorage.getItem("crossDuration");
+	if (crossDuration == null) {
+		crossDuration = crossDurationPicker.value;
+		sessionStorage.setItem("crossDuration", crossDuration);
+	} else {
+		crossDurationPicker.value = crossDuration;
+	}
 
-vSpacingPicker = document.getElementById('vSpacingPicker');
-vSpacingPicker.oninput = function(ev) {
-  sessionStorage.setItem("vSpacing", ev.target.value);
-  refreshStyling();
-} 
+	// noise 1 duration
+	noise1DurationPicker = document.getElementById('noise-1-duration-picker');
+	noise1DurationPicker.oninput = function(ev) {
+		sessionStorage.setItem("noise1Duration", ev.target.value);
+		refreshStyling();
+	} 
+	noise1Duration = sessionStorage.getItem("noise1Duration");
+	if (noise1Duration == null) {
+		noise1Duration = noise1DurationPicker.value;
+		sessionStorage.setItem("noise1Duration", noise1Duration);
+	} else {
+		noise1DurationPicker.value = noise1Duration;
+	}
 
-hSpacingPicker = document.getElementById('hSpacingPicker');
-hSpacingPicker.oninput = function(ev) {
-  sessionStorage.setItem("hSpacing", ev.target.value);
-  refreshStyling();
-} 
+	// main image duration
+	mainImageDurationPicker = document.getElementById('main-image-duration-picker');
+	mainImageDurationPicker.oninput = function(ev) {
+		sessionStorage.setItem("mainImageDuration", ev.target.value);
+		refreshStyling();
+	} 
+	mainImageDuration = sessionStorage.getItem("mainImageDuration");
+	if (mainImageDuration == null) {
+		mainImageDuration = noise1DurationPicker.value;
+		sessionStorage.setItem("mainImageDuration", mainImageDuration);
+	} else {
+		mainImageDurationPicker.value = mainImageDuration;
+	}
 
-mainImageHeightPicker = document.getElementById('mainImageHeightPicker');
-mainImageHeightPicker.oninput = function(ev) {
-  sessionStorage.setItem("mainImageHeight", ev.target.value);
-  refreshStyling();
-} 
-
-imageGridHeightPicker = document.getElementById('imageGridHeightPicker');
-imageGridHeightPicker.oninput = function(ev) {
-  sessionStorage.setItem("imageGridHeight", ev.target.value);
-  refreshStyling();
-} 
-
-noiseDurationPicker = document.getElementById('noiseDurationPicker');
-noiseDurationPicker.oninput = function(ev) {
-  sessionStorage.setItem("noiseDuration", ev.target.value);
-  refreshStyling();
-} 
-
-blankDurationPicker = document.getElementById('blankDurationPicker');
-blankDurationPicker.oninput = function(ev) {
-  sessionStorage.setItem("blankDuration", ev.target.value);
-  refreshStyling();
-} 
-
-
-
-
-backgroundColor = sessionStorage.getItem("backgroundColor");
-if (backgroundColor == null) {
-	backgroundColor = backgroundColorPicker.value;
-	sessionStorage.setItem("backgroundColor", backgroundColor);
-} else {
-	backgroundColorPicker.value = backgroundColor;
+	// noise-2-duration
+	noise2DurationPicker = document.getElementById('noise-2-duration-picker');
+	noise2DurationPicker.oninput = function(ev) {
+		sessionStorage.setItem("noise2Duration", ev.target.value);
+		refreshStyling();
+	} 
+	noise2Duration = sessionStorage.getItem("noise2Duration");
+	if (noise2Duration == null) {
+		noise2Duration = noise2DurationPicker.value;
+		sessionStorage.setItem("noise2Duration", noise2Duration);
+	} else {
+		noise2DurationPicker.value = noise2Duration;
+	}
 }
 
-fontColor = sessionStorage.getItem("fontColor");
-if (fontColor == null) {
-	fontColor = fontColorPicker.value;
-	sessionStorage.setItem("fontColor", fontColor);
-} else {
-	fontColorPicker.value = fontColor;
+// Appearance Parameters
+if (true) {
+
+	// background color 
+	backgroundColorPicker = document.getElementById('background-color-picker');
+	backgroundColorPicker.onchange = function(ev) {
+		sessionStorage.setItem("backgroundColor", ev.target.value);
+		refreshStyling();
+	};
+	backgroundColor = sessionStorage.getItem("backgroundColor");
+	if (backgroundColor == null) {
+		backgroundColor = backgroundColorPicker.value;
+		sessionStorage.setItem("backgroundColor", backgroundColor);
+	} else {
+		backgroundColorPicker.value = backgroundColor;
+	}
+
+	// font color
+	fontColorPicker = document.getElementById('font-color-picker');
+	fontColorPicker.onchange = function(ev) {
+		sessionStorage.setItem("fontColor", ev.target.value);
+		refreshStyling();
+	};
+	fontColor = sessionStorage.getItem("fontColor");
+	if (fontColor == null) {
+		fontColor = fontColorPicker.value;
+		sessionStorage.setItem("fontColor", fontColor);
+	} else {
+		fontColorPicker.value = fontColor;
+	}
 }
 
-size = sessionStorage.getItem("size");
-if (size == null) {
-	size = sizePicker.value;
-	sessionStorage.setItem("size", size);
-} else {
-	sizePicker.value = size;
-}
+// Layout Parameters Parameters
+if (true) {
 
-vSpacing = sessionStorage.getItem("vSpacing");
-if (vSpacing == null) {
-	vSpacing = vSpacingPicker.value;
-	sessionStorage.setItem("vSpacing", vSpacing);
-} else {
-	vSpacingPicker.value = vSpacing;
-}
+	// image-size
+	imageSizePicker = document.getElementById('image-size-picker');
+	imageSizePicker.oninput = function(ev) {
+		sessionStorage.setItem("imageSize", ev.target.value);
+		refreshStyling();
+	} 
+	imageSize = sessionStorage.getItem("imageSize");
+	if (imageSize == null) {
+		imageSize = imageSizePicker.value;
+		sessionStorage.setItem("imageSize", imageSize);
+	} else {
+		imageSizePicker.value = imageSize;
+	}
 
-hSpacing = sessionStorage.getItem("hSpacing");
-if (hSpacing == null) {
-	hSpacing = hSpacingPicker.value;
-	sessionStorage.setItem("hSpacing", hSpacing);
-} else {
-	hSpacingPicker.value = hSpacing;
-}
-
-mainImageHeight = sessionStorage.getItem("mainImageHeight");
-if (mainImageHeight == null) {
-	mainImageHeight = mainImageHeightPicker.value;
-	sessionStorage.setItem("mainImageHeight", mainImageHeight);
-} else {
-	mainImageHeightPicker.value = mainImageHeight;
-}
-
-imageGridHeight = sessionStorage.getItem("imageGridHeight");
-if (imageGridHeight == null) {
-	imageGridHeight = imageGridHeightPicker.value;
-	sessionStorage.setItem("imageGridHeight", imageGridHeight);
-} else {
-	imageGridHeightPicker.value = imageGridHeight;
-}
-
-noiseDuration = sessionStorage.getItem("noiseDuration");
-if (noiseDuration == null) {
-	noiseDuration = noiseDurationPicker.value;
-	sessionStorage.setItem("noiseDuration", noiseDuration);
-} else {
-	noiseDurationPicker.value = noiseDuration;
-}
-
-blankDuration = sessionStorage.getItem("blankDuration");
-if (blankDuration == null) {
-	blankDuration = blankDurationPicker.value;
-	sessionStorage.setItem("blankDuration", blankDuration);
-} else {
-	blankDurationPicker.value = blankDuration;
+	layoutRadiusPicker = document.getElementById('layout-radius-picker');
+	layoutRadiusPicker.oninput = function(ev) {
+		sessionStorage.setItem("layoutRadius", ev.target.value);
+		refreshStyling();
+	} 
+	layoutRadius = sessionStorage.getItem("layoutRadius");
+	if (layoutRadius == null) {
+		layoutRadius = layoutRadiusPicker.value;
+		sessionStorage.setItem("layoutRadius", layoutRadius);
+	} else {
+		layoutRadiusPicker.value = layoutRadius;
+	}
 }
 
 displayCachedExperiment();
