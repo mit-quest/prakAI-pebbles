@@ -23,20 +23,6 @@ if (true) {
 		crossDurationPicker.value = crossDuration;
 	}
 
-	// noise 1 duration
-	noise1DurationPicker = document.getElementById('noise-1-duration-picker');
-	noise1DurationPicker.oninput = function(ev) {
-		sessionStorage.setItem("noise1Duration", ev.target.value);
-		refreshStyling();
-	} 
-	noise1Duration = sessionStorage.getItem("noise1Duration");
-	if (noise1Duration == null) {
-		noise1Duration = noise1DurationPicker.value;
-		sessionStorage.setItem("noise1Duration", noise1Duration);
-	} else {
-		noise1DurationPicker.value = noise1Duration;
-	}
-
 	// main image duration
 	mainImageDurationPicker = document.getElementById('main-image-duration-picker');
 	mainImageDurationPicker.oninput = function(ev) {
@@ -45,14 +31,28 @@ if (true) {
 	} 
 	mainImageDuration = sessionStorage.getItem("mainImageDuration");
 	if (mainImageDuration == null) {
-		mainImageDuration = noise1DurationPicker.value;
+		mainImageDuration = mainImageDurationPicker.value;
 		sessionStorage.setItem("mainImageDuration", mainImageDuration);
 	} else {
 		mainImageDurationPicker.value = mainImageDuration;
 	}
 
+	// noise duration
+	noiseDurationPicker = document.getElementById('noise-duration-picker');
+	noiseDurationPicker.oninput = function(ev) {
+		sessionStorage.setItem("noiseDuration", ev.target.value);
+		refreshStyling();
+	} 
+	noiseDuration = sessionStorage.getItem("noiseDuration");
+	if (noiseDuration == null) {
+		noiseDuration = noiseDurationPicker.value;
+		sessionStorage.setItem("noiseDuration", noiseDuration);
+	} else {
+		noiseDurationPicker.value = noiseDuration;
+	}
+
 	// noise-2-duration
-	noise2DurationPicker = document.getElementById('noise-2-duration-picker');
+	/*noise2DurationPicker = document.getElementById('noise-2-duration-picker');
 	noise2DurationPicker.oninput = function(ev) {
 		sessionStorage.setItem("noise2Duration", ev.target.value);
 		refreshStyling();
@@ -63,7 +63,7 @@ if (true) {
 		sessionStorage.setItem("noise2Duration", noise2Duration);
 	} else {
 		noise2DurationPicker.value = noise2Duration;
-	}
+	}*/
 }
 
 // Appearance Parameters
