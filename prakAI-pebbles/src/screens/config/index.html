@@ -9,132 +9,208 @@
 		<title>Config</title>
 	</head>
 	<body>
+
+		<!-- Create Experiment INPUT DIALOG -->
+		<div id="password-dialog" class="row d-none" tabindex="-1">
+			<div class="col-12">
+				<h5>Enter Experiment Details</h5>
+				<div>
+					<form>
+						<input type="text" class="form-control" id="user-id-input">
+						<button type="submit" id="password-button" class="btn btn-default">Proceed</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div id="config-head" class="row fixed-top">
+
+			<div class="col-sm-6 text-left">
+				<h1>Configuration</h1>
+			</div>
+			<div class="col-sm-6 text-right">
+				<button type="button" 
+						class="btn btn-lg btn-outline-primary test"
+						onclick="validateAndBegin();">
+					Start Experiment
+				 </button>
+			</div>
+
+		</div>
 		
-		<div class="container-fluid">
+		<div id="config-body" class="container-fluid">
 
 			<div class="row">
-				<div class="col-sm-7">
-					<h1>Experiment Configuration</h1>
-				</div>
-				<div class="col-sm-4 text-right">
+
+				<!-- configuration selection -->
+				<div class="col-5 text-left">
 					<button type="button" 
-							class="btn btn-lg btn-primary test"
-							onclick="validateAndBegin();">
-						Start Experiment
-					 </button>
-				</div>
-				<div class="col-sm-1">
-					<!-- spacer for button -->
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-12">
-					<hr class="thickSeparator">
-				</div>
-			</div>
-
-			
-			<div class="row">
-
-				<div class="col-12 text-left">
-					<button type="button" 
-							class="btn btn-lg btn-primary test"
-							onclick="loadDirectoryOfExperiments()">
-						Load Experiment
+							class="btn btn-sm btn-primary btn-block"
+							title="Select directory with experimental configuration file and images"
+							onclick="loadConfigurationDirectory()">
+						Load Configuration
 					</button>
 				</div>
 
+				<div class="col-7 row">
+					<div class="col-1">
+
+					</div>
+					<div id="config-directory" class="col-11 current-selection">
+						click button to select directory...
+					</div>
+				</div>
+
 				<div class="col-12">
-					<hr>
+					<hr class="thinSeparator">
+				</div>
+
+				<!-- experimental selection -->
+				<div class="col-5 text-left">
+					<button type="button" 
+							class="btn btn-sm btn-primary btn-block"
+							title="Select directory where you want to save a new experiment for this user"
+							onclick="createExperimentalDataDirectoryDialog()">
+						Create New Experiment
+					</button>
+					<button type="button" 
+							class="btn btn-sm btn-primary btn-block"
+							title="Select directory for the current user's experiment"
+							onclick="loadExperimentalDataDirectory(true)">
+						Load Existing Experiment
+					</button>
+				</div>
+
+				<div class="col-7 row">
+					<div class="col-1">
+
+					</div>
+					<div id="experimental-data-directory" class="col-11 current-selection">
+						click button to select directory...
+					</div>
+				</div>
+
+				<div class="col-12">
+					<hr class="thinSeparator">
+				</div>
+
+				<!-- user data -->
+				<div class="col-12">
+					<h3>Current Experiment Progress</h3>
+					<ul>
+						<li>User ID: <span id="user-id">...</span></li>
+						<li>Creation Date: <span id="creation-date">...</span></li>
+					</ul>
+				</div>
+
+				<div class="col-12">
+					<hr class="thinSeparator">
+				</div>
+
+				<div class="col-12">
+					<h3>Parameters</h3>
 				</div>
 						
-				<div class="col-6">
+				<!-- Timing Parameters -->
+				<div class="col-4">
 					<div class="row">
 						<div class="col-12">
-							Background
-						</div>
-						<div class="col-12">
-							<input type="color" value="#000000" id="backgroundColorPicker">
+							<h4>Timing</h4>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-12">
-							Font
+							Cross Duration
 						</div>
 						<div class="col-12">
-							<input type="color" value="#ffffff" id="fontColorPicker">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							Noise Duration
-						</div>
-						<div class="col-12">
-							<input type="number" value="500" id="noiseDurationPicker">
+							<input type="number" value="500" id="cross-duration-picker">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-12">
-							Blank Duration
+							Noise 1 Duration
 						</div>
 						<div class="col-12">
-							<input type="number" value="500" id="blankDurationPicker">
-						</div>
-					</div>
-				</div>
-				<div class="col-6">
-					<div class="row">
-						<div class="col-12">
-							Size
-						</div>
-						<div class="col-12">
-							<input type="number" value="50" class="slider" id="sizePicker">
+							<input type="number" value="500" id="noise-1-duration-picker">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-12">
-							Vertical Spacing
+							Main Image Duration
 						</div>
 						<div class="col-12">
-							<input type="number" value="200" class="slider" id="vSpacingPicker">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							Horizontal Spacing
-						</div>
-						<div class="col-12">
-							<input type="number" value="200" class="slider" id="hSpacingPicker">
+							<input type="number" value="500" id="main-image-duration-picker">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-12">
-							Distance from Top of Main Image
+							Noise 2 Duration
 						</div>
 						<div class="col-12">
-							<input type="number" value="100" class="slider" id="mainImageHeightPicker">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							Distance from Top of Image Grid
-						</div>
-						<div class="col-12">
-							<input type="number" value="100" class="slider" id="imageGridHeightPicker">
+							<input type="number" value="500" id="noise-2-duration-picker">
 						</div>
 					</div>
 				</div>
 
-				<div class="col-sm-12">
+				<!-- Appearance Parameters -->
+				<div class="col-4 inner-column">
+					<div class="row">
+						<div class="col-12">
+							<h4>Appearance</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							Background Color
+						</div>
+						<div class="col-12">
+							<input type="color" value="#ffffff" id="background-color-picker">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							Text Color
+						</div>
+						<div class="col-12">
+							<input type="color" value="#000000" id="font-color-picker">
+						</div>
+					</div>
+				</div>
+
+				<!-- Layout Parameters -->
+				<div class="col-4">
+					<div class="row">
+						<div class="col-12">
+							<h4>Layout</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							Image Size
+						</div>
+						<div class="col-12">
+							<input type="number" value="50" class="slider" id="image-size-picker">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							Layout Radius
+						</div>
+						<div class="col-12">
+							<input type="number" value="50" class="slider" id="layout-radius-picker">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12">
 					<hr class="thinSeparator">
 				</div>
 
 			</div>
 
-		</div>
+			<div id="experimentPreviewList" class="row framed experimentPreviewList"></div>
 
-		<div id="experimentPreviewList" class="experimentPreviewList"></div>
+		</div>
 
 		<script src="./post.js"></script>
 	</body>
