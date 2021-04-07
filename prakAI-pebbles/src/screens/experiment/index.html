@@ -12,7 +12,10 @@
 				<!-- targeted by stuff in pre.js -->
 		<div id="experimentTable" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index:-1;">
 			<div id="waitscreen" class="" style="display:flex; justify-content:center; align-items:center; width:100%; height:100%;">
-				<img id = "cross" style="width: 2.5%;" src="../../images/cross.png" alt="">
+				<svg height="100" width="100">
+					<line x1="50" y1="0" x2="50" y2="100" style="stroke:black;stroke-width:3" />
+					<line x1="0" y1="50" x2="100" y2="50" style="stroke:black;stroke-width:3" />
+				</svg> 
 			</div>
 			
 			<div id="mainImageDIV" class="">1</div>
@@ -28,7 +31,19 @@
 
 		</div>
 		<div id="nextTrialScreen" class="" style="position: absolute; top: 0; left: 0; display:flex; justify-content:center; align-items:center; width:100%; height:100%;">
-			<input type="image" id = "nextTrialButton" style="width: 5%;" src="../../images/chevron.png" alt="">
+			<p class="nextTrialCount">
+				Trial <span id="currentTrial">#</span> of <span id="totalTrials">#</span>
+			</p>
+			<div style="display:flex; justify-content:center; align-items:center; width:100%; height:100%;">
+				<svg height="100" width="100">
+					<circle cx="50" cy="50" r="30" stroke="black" stroke-width="3" fill="red" />
+					<line x1="50" y1="20" x2="50" y2="80" style="stroke:gray;stroke-width:3" />
+					<line x1="20" y1="50" x2="80" y2="50" style="stroke:gray;stroke-width:3" />
+				</svg> 
+			</div>
+			<p class="nextTrialInstructions">
+				Look at center of circle and double tap anywhere
+			</p>
 		</div>
 		<!-- targeted by playSound() which is in pre.js -->
 		<div class="row">

@@ -22,6 +22,9 @@ let refreshStyling = showImages.functions.refreshStyling;
 
 function displayNext () {
 
+	currentTrial++;
+	document.getElementById('currentTrial').innerHTML = currentTrial;
+
 	//show a cross before displaying the image
 	waitScreen = document.getElementById('waitscreen');
 	//invert color of the cross if the app background is dark
@@ -65,8 +68,8 @@ function clickOnMain () {
 	noiseDIV.style.position = 'absolute';
 	noiseDIV.style.top = '0px';
 	noiseDIV.style.left = '0px';
-	noiseDIV.style.width = '3000px';
-	noiseDIV.style.height = '3000px';
+	noiseDIV.style.width = '100%';
+	noiseDIV.style.height = '100%';
 	noiseDIV.style.zIndex = '5';
 	noiseDIV.class = '';
 	noiseDIV.innerHTML = '<img style="width: 100%; height: 100%;" src="../../images/noise.gif" alt="">';
@@ -107,8 +110,7 @@ function nextTrial () {
 	} else {
 		nextTrialScreen = document.getElementById('nextTrialScreen');
 		nextTrialScreen.style.visibility = 'visible';
-		nextTrialButton = document.getElementById('nextTrialButton');
-		nextTrialButton.setAttribute('ondblclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
+		nextTrialScreen.setAttribute('ondblclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
 
 		//hide choices
 		document.getElementById("mainImageDIV").style.visibility = 'hidden';
