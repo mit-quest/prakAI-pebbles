@@ -10,8 +10,8 @@ refreshStyling();
 currentTrial = 1;
 document.getElementById('currentTrial').innerHTML = '1';
 
-totalTrials = parseFloat(sessionStorage.getItem('totalTrials'));
-document.getElementById('mainImageDIV').innerHTML = totalTrials;
+totalTrials = sessionStorage.getItem('totalTrials');
+document.getElementById('totalTrials').innerHTML = totalTrials;
 
 // set positions of the divs
 width = document.getElementById('experimentTable').clientWidth;

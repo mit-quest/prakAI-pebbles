@@ -10,19 +10,6 @@
 	</head>
 	<body>
 
-		<!-- Create Experiment INPUT DIALOG -->
-		<div id="password-dialog" class="row d-none" tabindex="-1">
-			<div class="col-12">
-				<h5>Enter Experiment Details</h5>
-				<div>
-					<form>
-						<input type="text" class="form-control" id="user-id-input">
-						<button type="submit" id="password-button" class="btn btn-default">Proceed</button>
-					</form>
-				</div>
-			</div>
-		</div>
-
 		<div id="config-head" class="row fixed-top">
 
 			<div class="col-sm-6 text-left">
@@ -32,7 +19,7 @@
 				<button type="button" 
 						class="btn btn-lg btn-outline-primary test"
 						onclick="validateAndBegin();">
-					Start Experiment
+					Start Run
 				 </button>
 			</div>
 
@@ -42,13 +29,52 @@
 
 			<div class="row">
 
+				<div class="col-12">
+					<hr class="thinSeparator">
+				</div>
+
+				<div class="col-5 text-left">
+					<button type="button" 
+							class="btn btn-sm btn-primary btn-block"
+							title="Select directory with all users"
+							onclick="loadUserDirectory()">
+						Select user directory
+					</button>
+				</div>
+
+				<div class="col-7 row">
+					<div class="col-1">
+
+					</div>
+					<div id="experimental-data-directory" class="col-11 current-selection">
+						click button to select directory...
+					</div>
+				</div>
+
+				<div class="col-12"><br></div>
+
+				<div class="col-12">
+					<form>
+						<!-- <label for="user-id-input">User ID</label> -->
+						<!-- <input type="text" class="form-control" id="user-id-input"> -->
+						
+						<label for="session-input">Session ID</label>
+						<input type="text" class="form-control" id="session-input">
+
+						<label for="run-input">Run ID</label>
+						<input type="text" class="form-control" id="run-input">
+					</form>
+				</div>
+
+				<div class="col-12"><br></div>
+
 				<!-- configuration selection -->
 				<div class="col-5 text-left">
 					<button type="button" 
 							class="btn btn-sm btn-primary btn-block"
 							title="Select directory with experimental configuration file and images"
 							onclick="loadConfigurationDirectory()">
-						Load Configuration
+						Select run configuration
 					</button>
 				</div>
 
@@ -65,47 +91,19 @@
 					<hr class="thinSeparator">
 				</div>
 
-				<!-- experimental selection -->
-				<div class="col-5 text-left">
-					<button type="button" 
-							class="btn btn-sm btn-primary btn-block"
-							title="Select directory where you want to save a new experiment for this user"
-							onclick="createExperimentalDataDirectoryDialog()">
-						Create New Experiment
-					</button>
-					<button type="button" 
-							class="btn btn-sm btn-primary btn-block"
-							title="Select directory for the current user's experiment"
-							onclick="loadExperimentalDataDirectory(true)">
-						Load Existing Experiment
-					</button>
-				</div>
-
-				<div class="col-7 row">
-					<div class="col-1">
-
-					</div>
-					<div id="experimental-data-directory" class="col-11 current-selection">
-						click button to select directory...
-					</div>
-				</div>
-
-				<div class="col-12">
-					<hr class="thinSeparator">
-				</div>
-
 				<!-- user data -->
-				<div class="col-12">
+				<!-- <div class="col-12">
 					<h3>Current Experiment Progress</h3>
 					<ul>
 						<li>User ID: <span id="user-id">...</span></li>
-						<li>Creation Date: <span id="creation-date">...</span></li>
+						<li>Session: <span id="session">...</span></li>
+						<li>Run: <span id="run">...</span></li>
 					</ul>
 				</div>
 
 				<div class="col-12">
 					<hr class="thinSeparator">
-				</div>
+				</div> -->
 
 				<div class="col-12">
 					<h3>Parameters</h3>
