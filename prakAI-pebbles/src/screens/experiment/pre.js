@@ -22,6 +22,9 @@ let refreshStyling = showImages.functions.refreshStyling;
 
 function displayNext () {
 
+	currentTrial++;
+	document.getElementById('currentTrial').innerHTML = currentTrial;
+
 	//show a cross before displaying the image
 	waitScreen = document.getElementById('waitscreen');
 	//invert color of the cross if the app background is dark

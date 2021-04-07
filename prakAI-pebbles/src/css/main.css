@@ -70,6 +70,16 @@ body {
 	width: 50px;
 }
 
+.nextTrialCount {
+	position: absolute;
+    top:  25%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+	font-size: 3rem;
+	text-align: center;
+}
+
 .nextTrialInstructions {
 	position: absolute;
     top:  75%;
@@ -78,4 +88,8 @@ body {
 
 	font-size: 2rem;
 	text-align: center;
+}
+
+#results {
+	visibility: hidden;
 }

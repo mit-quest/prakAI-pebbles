@@ -7,6 +7,12 @@ console.log("begin experiment/post.js");
 setAppBackground();
 refreshStyling();
 
+currentTrial = 1;
+document.getElementById('currentTrial').innerHTML = '1';
+
+totalTrials = parseFloat(sessionStorage.getItem('totalTrials'));
+document.getElementById('mainImageDIV').innerHTML = totalTrials;
+
 // set positions of the divs
 width = document.getElementById('experimentTable').clientWidth;
 if (width % 2 == 1) {
