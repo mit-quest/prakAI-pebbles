@@ -70,3 +70,12 @@ body {
 	width: 50px;
 }
 
+.nextTrialInstructions {
+	position: absolute;
+    top:  75%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+	font-size: 2rem;
+	text-align: center;
+}
