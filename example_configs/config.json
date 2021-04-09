@@ -1,0 +1,9 @@
+{
+    "crossDuration": "1000",
+    "mainImageDuration": "2000",
+    "noiseDuration": "3000",
+    "backgroundColor": "rgb(255,255,255)",
+    "textColor": "rgb(0,0,0)",
+    "imageSize": "100px",
+    "layoutRadius": "150px"
+}

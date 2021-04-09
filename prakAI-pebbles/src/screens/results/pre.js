@@ -1,5 +1,8 @@
 console.log("begin results/pre.js");
 
+let showImages = require('../../scripts/showImages.js');
+let setAppBackground = showImages.functions.setAppBackground;
+
 function returnToConfig() {
 
 	const { getCurrentWindow, app, dialog } = require('electron').remote;

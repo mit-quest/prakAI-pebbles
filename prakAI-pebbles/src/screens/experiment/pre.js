@@ -39,12 +39,14 @@ function displayNext () {
 	for (const image of expImages) {
 		image.style.visibility = 'hidden';
 	}
+
+	// hide nextTrialScreen
 	document.getElementById('nextTrialScreen').style.visibility = 'hidden';
 
 	//wait blankDuration
 	crossDuration = parseFloat(sessionStorage.getItem('crossDuration'));
 	setTimeout(() => {
-		playSound('mainSound');
+		// playSound('mainSound');
 		waitScreen.style.visibility = 'hidden';
 		showMain(allData[currentExperiment]);
 		setTimeout(() => {
@@ -84,7 +86,7 @@ function clickOnMain () {
 		noiseDIV.parentNode.removeChild(noiseDIV);
 		// show choices and play sound
 		logMain(currentExperiment);
-		playSound("choiceSound");
+		// playSound("choiceSound");
 		expImages = document.getElementsByClassName('expImageDIV');
 		for (const image of expImages) {
 			image.style.visibility = 'visible';
@@ -104,13 +106,17 @@ function clickOnMain () {
 }
 
 function nextTrial () {
+	
 	currentExperiment++;
 	if (currentExperiment > allDataLength - 1) {
 		displayEnd([]);
 	} else {
+		playSound('choiceSound');
 		nextTrialScreen = document.getElementById('nextTrialScreen');
 		nextTrialScreen.style.visibility = 'visible';
 		nextTrialScreen.setAttribute('ondblclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
+
+		document.getElementById('waitscreen').style.visibility = 'visible';
 
 		//hide choices
 		document.getElementById("mainImageDIV").style.visibility = 'hidden';
