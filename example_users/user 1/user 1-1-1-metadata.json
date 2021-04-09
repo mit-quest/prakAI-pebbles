@@ -1,0 +1,68 @@
+{
+  "date": 1618004109323,
+  "userDir": "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_users\\user 1",
+  "userID": "user 1",
+  "totalTrials": "3",
+  "configDir": "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full",
+  "allData": [
+    {
+      "displaySetting": 1,
+      "mainImage": "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\5.png",
+      "images": [
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\4.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\2.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\8.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\3.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\5.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\6.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\1.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\7.png"
+      ]
+    },
+    {
+      "displaySetting": 2,
+      "mainImage": "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\1.png",
+      "images": [
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\7.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\1.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\8.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\6.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\3.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\5.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\2.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\4.png"
+      ]
+    },
+    {
+      "displaySetting": 3,
+      "mainImage": "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\7.png",
+      "images": [
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\3.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\8.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\4.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\1.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\2.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\5.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\6.png",
+        "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full\\images\\7.png"
+      ]
+    }
+  ],
+  "configData": {
+    "crossDuration": "5000",
+    "mainImageDuration": "5000",
+    "noiseDuration": "5000",
+    "backgroundColor": "rgb(255,255,255)",
+    "textColor": "rgb(0,0,0)",
+    "imageSize": "100px",
+    "layoutRadius": "150px",
+    "startSound": "start.wav",
+    "choiceSound": "choice.wav",
+    "endSound": "end.wav",
+    "initialInstructions": "Passed through config.json"
+  },
+  "sessionID": "1",
+  "runID": "1",
+  "experimenterID": "1",
+  "subjectID": "1"
+}
