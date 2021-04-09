@@ -1,9 +1,9 @@
 {
-  "date": 1618003899957,
+  "date": 1618002091775,
   "userDir": "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_users\\user 5",
   "userID": "user 5",
   "totalTrials": "3",
-  "configDir": "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full",
+  "configDir": "\"C:\\\\Users\\\\kkeane\\\\Documents\\\\GitHub\\\\prakAI-pebbles\\\\example_experiments\\\\full\"",
   "allData": [
     {
       "displaySetting": 1,
@@ -64,5 +64,73 @@
   "sessionID": "1",
   "runID": "1",
   "experimenterID": "1",
-  "subjectID": "1"
+  "subjectID": "1",
+  "dataLog": [
+    [
+      "Screen 1 - start experiment",
+      1618002099581,
+      0
+    ],
+    [
+      "show-main",
+      1618002104588
+    ],
+    [
+      "Screen 4 - display choices",
+      1618002114591,
+      0
+    ],
+    [
+      "Screen 4 - select choice",
+      1618002117015,
+      0,
+      4,
+      0,
+      false
+    ],
+    [
+      "Screen 1 - start experiment",
+      1618002119942,
+      1
+    ],
+    [
+      "show-main",
+      1618002124960
+    ],
+    [
+      "Screen 4 - display choices",
+      1618002134966,
+      1
+    ],
+    [
+      "Screen 4 - select choice",
+      1618002138086,
+      1,
+      1,
+      7,
+      false
+    ],
+    [
+      "Screen 1 - start experiment",
+      1618002139190,
+      2
+    ],
+    [
+      "show-main",
+      1618002144201
+    ],
+    [
+      "Screen 4 - display choices",
+      1618002154215,
+      2
+    ],
+    [
+      "Screen 4 - select choice",
+      1618002155231,
+      2,
+      7,
+      7,
+      true
+    ]
+  ]
 }

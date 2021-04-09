@@ -1,0 +1,13 @@
+{
+    "crossDuration": "5000",
+    "mainImageDuration": "5000",
+    "noiseDuration": "5000",
+    "backgroundColor": "rgb(255,255,255)",
+    "textColor": "rgb(0,0,0)",
+    "imageSize": "100px",
+    "layoutRadius": "150px",
+    "startSound": "start.wav",
+    "choiceSound": "choice.wav",
+    "endSound": "end.wav",
+    "initialInstructions": "Passed through config.json"
+}

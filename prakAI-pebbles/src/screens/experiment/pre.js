@@ -1,21 +1,16 @@
 console.log("begin experiment/pre.js");
 
-let allData = JSON.parse(sessionStorage.getItem("allData"));
+const path = require('path');
+
+let metadata = JSON.parse(sessionStorage.getItem("metadata"));
+let allData = metadata["allData"];
 let allDataLength = Object.keys(allData).length;
 
 let currentExperiment = -1;
 let dataLog = [];
 
-let displaySetting, mainImage, images, mainImagePosition;
-let leftDiv, rightDiv;
-let mainContent, choicesContent;
-
 let showImages = require('../../scripts/showImages.js');
 let showMain = showImages.functions.showMain;
-dataLog.push([
-	'show-main',
-	Date.now()
-]);	
 
 let setAppBackground = showImages.functions.setAppBackground;
 let refreshStyling = showImages.functions.refreshStyling;
@@ -44,11 +39,12 @@ function displayNext () {
 	document.getElementById('nextTrialScreen').style.visibility = 'hidden';
 
 	//wait blankDuration
-	crossDuration = parseFloat(sessionStorage.getItem('crossDuration'));
+	crossDuration = parseFloat(metadata['configData']['crossDuration']);
 	setTimeout(() => {
 		// playSound('mainSound');
 		waitScreen.style.visibility = 'hidden';
 		showMain(allData[currentExperiment]);
+		dataLog.push(['show-main', Date.now()]);	
 		setTimeout(() => {
 			clickOnMain();
 		}, crossDuration); 
@@ -79,7 +75,7 @@ function clickOnMain () {
 	targetElement = document.body;
 	targetElement.appendChild(noiseDIV);
 
-	noiseDuration = parseFloat(sessionStorage.getItem('noiseDuration'));
+	noiseDuration = parseFloat(metadata['configData']['noiseDuration']);
 	// wait 2 seconds
 	setTimeout(() => {
 		//kill noise

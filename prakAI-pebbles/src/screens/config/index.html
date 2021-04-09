@@ -33,48 +33,13 @@
 					<hr class="thinSeparator">
 				</div>
 
-				<div class="col-5 text-left">
-					<button type="button" 
-							class="btn btn-sm btn-primary btn-block"
-							title="Select directory with all users"
-							onclick="loadUserDirectory()">
-						Select user directory
-					</button>
-				</div>
-
-				<div class="col-7 row">
-					<div class="col-1">
-
-					</div>
-					<div id="experimental-data-directory" class="col-11 current-selection">
-						click button to select directory...
-					</div>
-				</div>
-
-				<div class="col-12"><br></div>
-
-				<div class="col-12">
-					<form>
-						<!-- <label for="user-id-input">User ID</label> -->
-						<!-- <input type="text" class="form-control" id="user-id-input"> -->
-						
-						<label for="session-input">Session ID</label>
-						<input type="text" class="form-control" id="session-input">
-
-						<label for="run-input">Run ID</label>
-						<input type="text" class="form-control" id="run-input">
-					</form>
-				</div>
-
-				<div class="col-12"><br></div>
-
 				<!-- configuration selection -->
 				<div class="col-5 text-left">
 					<button type="button" 
 							class="btn btn-sm btn-primary btn-block"
 							title="Select directory with experimental configuration file and images"
 							onclick="loadConfigurationDirectory()">
-						Select run configuration
+						Select Run Configuration
 					</button>
 				</div>
 
@@ -87,116 +52,24 @@
 					</div>
 				</div>
 
-				<div class="col-12">
-					<hr class="thinSeparator">
+				<div class="col-12"><br></div>
+
+				<!-- user selection -->
+				<div class="col-5 text-left">
+					<button type="button" 
+							class="btn btn-sm btn-primary btn-block"
+							title="Select directory with all users"
+							onclick="loadUserDirectory()">
+						Select User Data Directory
+					</button>
 				</div>
 
-				<!-- user data -->
-				<!-- <div class="col-12">
-					<h3>Current Experiment Progress</h3>
-					<ul>
-						<li>User ID: <span id="user-id">...</span></li>
-						<li>Session: <span id="session">...</span></li>
-						<li>Run: <span id="run">...</span></li>
-					</ul>
-				</div>
+				<div class="col-7 row">
+					<div class="col-1">
 
-				<div class="col-12">
-					<hr class="thinSeparator">
-				</div> -->
-
-				<div class="col-12">
-					<h3>Parameters</h3>
-				</div>
-						
-				<!-- Timing Parameters -->
-				<div class="col-4">
-					<div class="row">
-						<div class="col-12">
-							<h4>Timing</h4>
-						</div>
 					</div>
-					<div class="row">
-						<div class="col-12">
-							Cross Duration
-						</div>
-						<div class="col-12">
-							<input type="number" value="500" id="cross-duration-picker">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							Main Image Duration
-						</div>
-						<div class="col-12">
-							<input type="number" value="500" id="main-image-duration-picker">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							Noise Duration
-						</div>
-						<div class="col-12">
-							<input type="number" value="500" id="noise-duration-picker">
-						</div>
-					</div>
-					<!-- <div class="row">
-						<div class="col-12">
-							Noise 2 Duration
-						</div>
-						<div class="col-12">
-							<input type="number" value="500" id="noise-2-duration-picker">
-						</div>
-					</div> -->
-				</div>
-
-				<!-- Appearance Parameters -->
-				<div class="col-4 inner-column">
-					<div class="row">
-						<div class="col-12">
-							<h4>Appearance</h4>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							Background Color
-						</div>
-						<div class="col-12">
-							<input type="color" value="#ffffff" id="background-color-picker">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							Text Color
-						</div>
-						<div class="col-12">
-							<input type="color" value="#000000" id="font-color-picker">
-						</div>
-					</div>
-				</div>
-
-				<!-- Layout Parameters -->
-				<div class="col-4">
-					<div class="row">
-						<div class="col-12">
-							<h4>Layout</h4>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							Image Size
-						</div>
-						<div class="col-12">
-							<input type="number" value="50" class="slider" id="image-size-picker">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							Layout Radius
-						</div>
-						<div class="col-12">
-							<input type="number" value="150" class="slider" id="layout-radius-picker">
-						</div>
+					<div id="user-directory" class="col-11 current-selection">
+						click button to select directory...
 					</div>
 				</div>
 
@@ -204,9 +77,44 @@
 					<hr class="thinSeparator">
 				</div>
 
-			</div>
+				<!-- trial -->
+				<div class="col-12">
+					<form>
+						<div class="row">
+							<div class="col-4">
+								<label for="session-input">Session ID</label>
+								<input type="text" class="form-control" id="session-input">
+							</div>
+							<div class="col-4">
+								<label for="run-input">Run ID</label>
+								<input type="text" class="form-control" id="run-input">
+							</div>
+						</div>					
+					</form>
+				</div>
 
-			<div id="experimentPreviewList" class="row framed experimentPreviewList"></div>
+				<div class="col-12">
+					<hr class="thinSeparator">
+				</div>
+
+				<div class="col-12">
+					<form>
+						<div class="row">
+							<div class="col-4">
+								<label for="experimenter-input">Experimenter Initials</label>
+								<input type="text" class="form-control" id="experimenter-input">
+							</div>
+							<div class="col-4">
+								<label for="subject-input">Subject Initials</label>
+								<input type="text" class="form-control" id="subject-input">
+							</div>
+						</div>					
+					</form>
+				</div>
+
+				<div class="col-12">
+					<hr class="thinSeparator">
+				</div>
 
 		</div>
 

@@ -1,9 +1,9 @@
 {
-  "date": 1618003899957,
+  "date": 1618000310066,
   "userDir": "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_users\\user 5",
   "userID": "user 5",
   "totalTrials": "3",
-  "configDir": "C:\\Users\\kkeane\\Documents\\GitHub\\prakAI-pebbles\\example_experiments\\full",
+  "configDir": "\"C:\\\\Users\\\\kkeane\\\\Documents\\\\GitHub\\\\prakAI-pebbles\\\\example_experiments\\\\full\"",
   "allData": [
     {
       "displaySetting": 1,
@@ -49,9 +49,9 @@
     }
   ],
   "configData": {
-    "crossDuration": "5000",
-    "mainImageDuration": "5000",
-    "noiseDuration": "5000",
+    "crossDuration": "1000",
+    "mainImageDuration": "2000",
+    "noiseDuration": "3000",
     "backgroundColor": "rgb(255,255,255)",
     "textColor": "rgb(0,0,0)",
     "imageSize": "100px",
@@ -61,8 +61,8 @@
     "endSound": "end.wav",
     "initialInstructions": "Passed through config.json"
   },
-  "sessionID": "1",
-  "runID": "1",
-  "experimenterID": "1",
-  "subjectID": "1"
+  "sessionID": "12",
+  "runID": "12",
+  "experimenterID": "21",
+  "subjectID": "12"
 }
