@@ -40,14 +40,15 @@ function displayNext () {
 
 	//wait blankDuration
 	crossDuration = parseFloat(metadata['configData']['crossDuration']);
+	mainImageDuration = parseFloat(metadata['configData']['mainImageDuration']);
 	setTimeout(() => {
 		// playSound('mainSound');
 		waitScreen.style.visibility = 'hidden';
 		showMain(allData[currentExperiment]);
-		dataLog.push(['show-main', Date.now()]);	
+		dataLog.push(['Screen 2 - show main image', Date.now()]);	
 		setTimeout(() => {
 			clickOnMain();
-		}, crossDuration); 
+		}, mainImageDuration); 
 
 		// Use this code if you want to display the options by clicking on the main image
 		// mainImageLink = document.getElementById('mainImageLink');

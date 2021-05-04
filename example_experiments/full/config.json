@@ -1,7 +1,7 @@
 {
-    "crossDuration": "5000",
-    "mainImageDuration": "5000",
-    "noiseDuration": "5000",
+    "crossDuration": "500",
+    "mainImageDuration": "1000",
+    "noiseDuration": "1000",
     "backgroundColor": "rgb(255,255,255)",
     "textColor": "rgb(0,0,0)",
     "imageSize": "100px",

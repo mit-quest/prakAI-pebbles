@@ -14,9 +14,25 @@ let metadata = JSON.parse(sessionStorage.getItem("metadata"));
 function saveDataLog() {
 	dataLog = JSON.parse(sessionStorage.getItem("dataLog"));
 	metadata['dataLog'] = dataLog;
-	resultsFilePath = path.join(metadata["userDir"], metadata['userID'] + '-' + metadata['sessionID'] + '-' + metadata['runID'] + '_results.json');
-	fs.writeFileSync(resultsFilePath, JSON.stringify(metadata, null, 2));
-	document.getElementById('saveLocation').innerHTML = resultsFilePath;
+	resultsFilePath = path.join(metadata["userDir"], metadata['userID'] + '-' + metadata['sessionID'] + '-' + metadata['runID'] + '_results');
+	document.getElementById('saveLocation').innerHTML = resultsFilePath + '.json';
+	fs.writeFileSync(resultsFilePath + '.json', JSON.stringify(metadata, null, 2));
+	fs.writeFileSync(resultsFilePath + '.csv', jsonToCSV(dataLog));
+}
+
+function jsonToCSV(dataLog) {
+	var array = typeof dataLog != 'object' ? JSON.parse(dataLog) : dataLog;
+	var csv = '';
+	var header = 'Event, Time Stamp, Trial Number, Main Image Position, Selected Image Position, Result,';
+	csv += header + '\r\n';
+	for (var i = 0; i < array.length; i++) {
+		var line = '';
+		for (var index in array[i]) {
+			line += array[i][index] + ',';
+		}
+		csv += line + '\r\n';
+	}
+	return csv;
 }
 
 function returnToConfig() {
