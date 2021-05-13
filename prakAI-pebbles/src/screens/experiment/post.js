@@ -1,6 +1,3 @@
-// output to terminal solely for debugging purposes
-var nodeConsole = require('console');
-var myConsole = new nodeConsole.Console(process.stdout, process.stderr);
 console.log("begin experiment/post.js");
 
 setAppBackground();
@@ -52,8 +49,6 @@ let x_coords = Array.from(list, x =>
                           (Math.round(layoutRadius * Math.cos(x * 2 * Math.PI / length) + mainImageX)).toString() + 'px');
 let y_coords = Array.from(list, y => 
                           (Math.round(layoutRadius * Math.sin(y * 2 * Math.PI / length) + mainImageY)).toString() + "px");
-myConsole.log(x_coords);
-myConsole.log(y_coords);
 
 mainImageDIV = document.getElementById('mainImageDIV');
 mainImageDIV.style.zIndex = '1';

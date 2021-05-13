@@ -1,5 +1,5 @@
 {
-  "date": 1620162265642,
+  "date": 1620878009861,
   "userDir": "/Users/ginnysun/Desktop/nini/Coding/prakAI/prakAI-pebbles/example_users/user 1",
   "userID": "user 1",
   "totalTrials": "3",
@@ -49,9 +49,9 @@
     }
   ],
   "configData": {
-    "crossDuration": "500",
-    "mainImageDuration": "1000",
-    "noiseDuration": "1000",
+    "crossDuration": "200",
+    "mainImageDuration": "200",
+    "noiseDuration": "200",
     "backgroundColor": "rgb(255,255,255)",
     "textColor": "rgb(0,0,0)",
     "imageSize": "100px",
@@ -64,5 +64,5 @@
   "sessionID": "1",
   "runID": "1",
   "experimenterID": "GS",
-  "subjectID": "KK"
+  "subjectID": "DK"
 }
