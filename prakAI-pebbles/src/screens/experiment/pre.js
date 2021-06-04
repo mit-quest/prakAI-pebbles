@@ -108,12 +108,6 @@ function nextTrial () {
 	if (currentExperiment > allDataLength - 1) {
 		displayEnd([]);
 	} else {
-		playSound('choiceSound');
-		nextTrialScreen = document.getElementById('nextTrialScreen');
-		nextTrialScreen.style.visibility = 'visible';
-		nextButton = document.getElementById('nextButton')
-		nextButton.setAttribute('ondblclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
-
 		document.getElementById('waitscreen').style.visibility = 'hidden';
 
 		//hide choices
@@ -122,6 +116,12 @@ function nextTrial () {
 		for (const image of expImages) {
 			image.style.visibility = 'hidden';
 		}
+
+		playSound('choiceSound');
+		nextTrialScreen = document.getElementById('nextTrialScreen');
+		nextTrialScreen.style.visibility = 'visible';
+		nextButton = document.getElementById('nextButton')
+		nextButton.setAttribute('ondblclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
 	}
 }
 
