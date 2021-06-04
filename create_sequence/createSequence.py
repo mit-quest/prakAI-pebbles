@@ -28,6 +28,24 @@ for n in range(0, numTrials):
 	trial['images'] = images[:]
 	expArrangement.append(trial)
 
+# check randomization
+mainImageCount = [0 for i in range(len(images))]
+mainImagePos = [0 for i in range(len(images))]
+imageChoicePos = {}
+for trial in expArrangement:
+	mainImageCount[int(trial['mainImage'][0]) - 1] += 1
+	for i in range(len(trial['images'])):
+		if trial['mainImage'] == trial['images'][i]:
+			mainImagePos[i] += 1
+		if trial['images'][i] in imageChoicePos.keys():
+			imageChoicePos[trial['images'][i]][i] += 1
+		else:
+			imageChoicePos[trial['images'][i]] = [0 for i in range(len(images))]
+			imageChoicePos[trial['images'][i]][i] += 1
+print(mainImageCount)
+print(mainImagePos)
+print(imageChoicePos)
+
 # write to JSON file
 fileName = input("File name to save as: ")
 with open(fileName, "w") as write_file:

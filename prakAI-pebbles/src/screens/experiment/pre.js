@@ -28,7 +28,7 @@ function displayNext () {
 	}
 	waitScreen.style.visibility = 'visible';
 
-	//hide nextButton
+	//hide image options
 	document.getElementById("mainImageDIV").style.visibility = 'hidden';
 	expImages = document.getElementsByClassName('expImageDIV');
 	for (const image of expImages) {
@@ -111,9 +111,10 @@ function nextTrial () {
 		playSound('choiceSound');
 		nextTrialScreen = document.getElementById('nextTrialScreen');
 		nextTrialScreen.style.visibility = 'visible';
-		nextTrialScreen.setAttribute('ondblclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
+		nextButton = document.getElementById('nextButton')
+		nextButton.setAttribute('ondblclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
 
-		document.getElementById('waitscreen').style.visibility = 'visible';
+		document.getElementById('waitscreen').style.visibility = 'hidden';
 
 		//hide choices
 		document.getElementById("mainImageDIV").style.visibility = 'hidden';

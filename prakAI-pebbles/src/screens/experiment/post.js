@@ -39,16 +39,16 @@ if (imageSize % 2 == 1) {
 }
 
 mainImageX = centerW - imageSize/2;
-mainImageY = centerH - imageSize/2;
+mainImageY = 3*centerH/2 - imageSize/2;
 
 // Set the coordinates for where the image should go
 layoutRadius = parseFloat(metadata['configData']['layoutRadius']);
 length = 8;
 let list = [...Array(length).keys()]
 let x_coords = Array.from(list, x => 
-                          (Math.round(layoutRadius * Math.cos(x * 2 * Math.PI / length) + mainImageX)).toString() + 'px');
+                          (Math.round(layoutRadius * Math.cos((x * 2 * Math.PI + 1.5) / (length * 2 - 1)) + mainImageX)).toString() + 'px');
 let y_coords = Array.from(list, y => 
-                          (Math.round(layoutRadius * Math.sin(y * 2 * Math.PI / length) + mainImageY)).toString() + "px");
+                          (mainImageY - Math.round(layoutRadius * Math.sin((y * 2 * Math.PI + 1.5)/ (length * 2 - 1)))).toString() + "px");
 
 mainImageDIV = document.getElementById('mainImageDIV');
 mainImageDIV.style.zIndex = '1';
@@ -106,6 +106,13 @@ expImage8.style.top = y_coords[7];
 expImage8.style.left = x_coords[7];
 expImage8.style.width = imageSize.toString() + 'px';
 
+cross = document.getElementById('cross');
+cross.style.position = 'absolute';
+cross.style.top = mainImageY;
+
+nextButton = document.getElementById('nextButton');
+nextButton.style.position = 'absolute';
+nextButton.style.top = 14*centerH/8;
 
 
 // start experiment
