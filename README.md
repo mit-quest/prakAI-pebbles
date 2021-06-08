@@ -6,7 +6,7 @@ An Electron app with touch interactions for visual cognition testing in children
 	- [Previewing, Packaging, and Modifying the App](#previewing-packaging-and-modifying-the-app)
 		- [Previewing App using Electron](#previewing-app-using-electron)
 			- [Sample App](#sample-app)
-			- [PrakAI-Pebbles](#prakai-pebbles)
+			- [PrakAI-Pebbles](#prakai-pebbles-1)
 		- [Packaging the App using Electron Forge](#packaging-the-app-using-electron-forge)
 	- [About the Naming](#about-the-naming)
 		- [Why PrakAI?](#why-prakai)
@@ -38,6 +38,8 @@ Building PrakAI-Pebbles by completing the following steps:
 1. Download this repo
 2. Terminal into the `prakAI-pebbles` directory inside the local copy
 3. Install all dependencies by running `npm install` 
+   1. Consider bumping updates as needed with caution `npm update`
+   2. Consider addressing vulnerabilities `npm audit fix`
 4. Preview the app by running `npm start` 
 
 ### Packaging the App using Electron Forge
