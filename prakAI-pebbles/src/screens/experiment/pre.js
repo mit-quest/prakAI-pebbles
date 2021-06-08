@@ -28,7 +28,7 @@ function displayNext () {
 	}
 	waitScreen.style.visibility = 'visible';
 
-	//hide nextButton
+	//hide image options
 	document.getElementById("mainImageDIV").style.visibility = 'hidden';
 	expImages = document.getElementsByClassName('expImageDIV');
 	for (const image of expImages) {
@@ -40,14 +40,15 @@ function displayNext () {
 
 	//wait blankDuration
 	crossDuration = parseFloat(metadata['configData']['crossDuration']);
+	mainImageDuration = parseFloat(metadata['configData']['mainImageDuration']);
 	setTimeout(() => {
 		// playSound('mainSound');
 		waitScreen.style.visibility = 'hidden';
 		showMain(allData[currentExperiment]);
-		dataLog.push(['show-main', Date.now()]);	
+		dataLog.push(['Screen 2 - show main image', Date.now()]);	
 		setTimeout(() => {
 			clickOnMain();
-		}, crossDuration); 
+		}, mainImageDuration); 
 
 		// Use this code if you want to display the options by clicking on the main image
 		// mainImageLink = document.getElementById('mainImageLink');
@@ -107,12 +108,7 @@ function nextTrial () {
 	if (currentExperiment > allDataLength - 1) {
 		displayEnd([]);
 	} else {
-		playSound('choiceSound');
-		nextTrialScreen = document.getElementById('nextTrialScreen');
-		nextTrialScreen.style.visibility = 'visible';
-		nextTrialScreen.setAttribute('ondblclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
-
-		document.getElementById('waitscreen').style.visibility = 'visible';
+		document.getElementById('waitscreen').style.visibility = 'hidden';
 
 		//hide choices
 		document.getElementById("mainImageDIV").style.visibility = 'hidden';
@@ -120,6 +116,12 @@ function nextTrial () {
 		for (const image of expImages) {
 			image.style.visibility = 'hidden';
 		}
+
+		playSound('choiceSound');
+		nextTrialScreen = document.getElementById('nextTrialScreen');
+		nextTrialScreen.style.visibility = 'visible';
+		nextButton = document.getElementById('nextButton')
+		nextButton.setAttribute('ondblclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
 	}
 }
 

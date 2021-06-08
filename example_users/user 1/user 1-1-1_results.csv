@@ -1,0 +1,4 @@
+subject ID, experimenter ID, session ID, run ID, date, trial number,main image, position of matched image, position chosen, response score,start timestamp, main image display timestamp, display choices timestamp, select image timestamp,position 0, position 1, position 2, position 3, position 4, position 5, position 6, position 7,
+DK,GS,1,1,1620878009861,1,5,4,2,false,1620878013694,1620878013900,1620878014313,1620878014988,4,2,8,3,5,6,1,7,
+DK,GS,1,1,1620878009861,2,1,1,1,true,1620878015592,1620878015802,1620878016207,1620878016923,7,1,8,6,3,5,2,4,
+DK,GS,1,1,1620878009861,3,7,7,7,true,1620878017573,1620878017778,1620878018182,1620878018879,3,8,4,1,2,5,6,7,

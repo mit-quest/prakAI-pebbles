@@ -12,7 +12,7 @@
 
 		<div id="experimentTable" class="experimentScreen">
 			<div id="waitscreen">
-				<svg height="100" width="100">
+				<svg id = "cross" height="100" width="100">
 					<line x1="50" y1="0" x2="50" y2="100" style="stroke:black;stroke-width:3" />
 					<line x1="0" y1="50" x2="100" y2="50" style="stroke:black;stroke-width:3" />
 				</svg> 
@@ -36,14 +36,14 @@
 				Trial <span id="currentTrial">#</span> of <span id="totalTrials">#</span>
 			</p>
 			<div style="display:flex; justify-content:center; align-items:center; width:100%; height:100%;">
-				<svg height="100" width="100">
+				<svg id = "nextButton" height="100" width="100">
 					<circle cx="50" cy="50" r="30" stroke="black" stroke-width="3" fill="red" />
 					<line x1="50" y1="20" x2="50" y2="80" style="stroke:gray;stroke-width:3" />
 					<line x1="20" y1="50" x2="80" y2="50" style="stroke:gray;stroke-width:3" />
 				</svg> 
 			</div>
 			<p class="nextTrialInstructions">
-				Look at center of circle and double tap anywhere
+				Double click the circle to start the next trial
 			</p>
 		</div>
 
