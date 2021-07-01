@@ -33,7 +33,7 @@ function jsonToCSV(metadata) {
 	for (var i = 0; i < parseInt(data['totalTrials']); i++) {
 		var line = '';
 		line += data['subjectID'] + ',' + data['experimenterID'] + ',' + data['sessionID'] + ',' + data['runID'] + ',' + data['date'] + ',' + trialSetting[i]['displaySetting'] + ',';
-		line += trialSetting[i]['mainImage'].slice(-5,-4) + ',' + results[i*4+3][3] + ',' + results[i*4+3][4] + ',' + results[i*4+3][5] + ',';
+		line += trialSetting[i]['mainImage'].split("/").pop() + ',' + results[i*4+3][3] + ',' + results[i*4+3][4] + ',' + results[i*4+3][5] + ',';
 		line += results[i*4][1] + ',' + results[i*4 + 1][1] + ',' + results[i*4 + 2][1] + ',' + results[i*4 + 3][1] + ',';
 		for (var j = 0; j < trialSetting[i]['images'].length; j++) {
 			line += trialSetting[i]['images'][j].slice(-5,-4) + ',';
