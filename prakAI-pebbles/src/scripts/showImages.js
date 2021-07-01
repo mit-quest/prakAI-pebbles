@@ -1,4 +1,5 @@
 let showImages = {};
+let metadata = JSON.parse(sessionStorage.getItem("metadata"));
 
 showImages.showMain = function(experiment) {
 
@@ -29,7 +30,7 @@ showImages.showMain = function(experiment) {
 };
 
 let setBackgroundColor = function () {
-	backgroundColor = sessionStorage.getItem("backgroundColor");
+	backgroundColor = metadata['configData']['backgroundColor'];
 	previewPane = document.getElementById('experimentPreviewList');
 	if (previewPane !== null) {
 		previewPane.style.backgroundColor = backgroundColor;
@@ -37,7 +38,7 @@ let setBackgroundColor = function () {
 }
 
 let setFontColor = function () {
-	fontColor = sessionStorage.getItem("fontColor");
+	fontColor = metadata['configData']['textColor'];
 	previewPane = document.getElementById('experimentPreviewList');
 	if (previewPane !== null) {
 		previewPane.style.color = fontColor;
@@ -69,8 +70,10 @@ showImages.refreshStyling = function () {
 }
 
 showImages.setAppBackground = function () {
-	backgroundColor = sessionStorage.getItem('backgroundColor');
+	backgroundColor = metadata['configData']['backgroundColor'];
+	fontColor = metadata['configData']['textColor'];
 	document.body.style.backgroundColor = backgroundColor;
+	document.body.style.color = fontColor;
 }
 
 exports.functions = showImages;
