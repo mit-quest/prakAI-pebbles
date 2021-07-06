@@ -24,21 +24,32 @@ function loadConfigurationDirectory() {
 		configDirElement = document.getElementById('config-directory');
 		configDirElement.innerHTML = configDir;
 
-		// load allData
-		allData = require(path.join(configDir, "sequence.json"));
+		// do the same for config.json
+		configData = require(path.join(configDir, "config.json"));
+		sessionStorage.setItem("configData", JSON.stringify(configData));
+		
+	}
 
+}
+
+function loadSequenceData() {
+	try {
+		configDir = sessionStorage.getItem("configDir");
+		sessionID = sessionStorage.getItem("sessionID");
+		runID = sessionStorage.getItem("runID");
+		// load allData
+		allData = require(path.join(configDir, "sequence_s" + sessionID + "_r" + runID + ".json"));
 		// replace image names with full local paths
 		allData.forEach ((data, index, arrayPointer) => {
 
-			fullPath = path.join(configDir, "images", data["mainImage"]);
-			arrayPointer[index]["mainImage"] = fullPath;
+		fullPath = path.join(configDir, "images", data["mainImage"]);
+		arrayPointer[index]["mainImage"] = fullPath;
 
-			allImages = arrayPointer[index]["images"];
-			allImages.forEach ((innerData, innerIndex)=>{
-				fullPath = path.join(configDir, "images", innerData);
-				arrayPointer[index]["images"][innerIndex] = fullPath;
+		allImages = arrayPointer[index]["images"];
+		allImages.forEach ((innerData, innerIndex)=>{
+			fullPath = path.join(configDir, "images", innerData);
+			arrayPointer[index]["images"][innerIndex] = fullPath;
 			})
-
 		})
 		console.log("allData loaded");
 		console.log(allData);
@@ -48,12 +59,10 @@ function loadConfigurationDirectory() {
 
 		totalTrials = allData.length;
 		sessionStorage.setItem("totalTrials", totalTrials);
-
-		// do the same for config.json
-		configData = require(path.join(configDir, "config.json"));
-		sessionStorage.setItem("configData", JSON.stringify(configData));
-		
+	} catch(err) {
+		alert("Sequence data not found");
 	}
+	
 
 }
 
@@ -77,28 +86,27 @@ function loadUserDirectory() {
 }
 
 function validateAndBegin() {
+	// get input fields
+	if (true) {
+		sessionID = document.getElementById('session-input').value;
+		sessionStorage.setItem("sessionID", sessionID);
 
+		runID = document.getElementById('run-input').value;
+		sessionStorage.setItem("runID", runID);
+
+		experimenterID = document.getElementById('experimenter-input').value;
+		sessionStorage.setItem("experimenterID", experimenterID);
+
+		subjectID = document.getElementById('subject-input').value;
+		sessionStorage.setItem("subjectID", subjectID);
+	}
+	loadSequenceData();
 	allData = JSON.parse(sessionStorage.getItem("allData"));
 	configData = JSON.parse(sessionStorage.getItem("configData"));
 	userDir = sessionStorage.getItem("userDir");
 	
 	if (validDataQ(allData, configData)) {
 		let mainWindow = getCurrentWindow();
-
-		// get input fields
-		if (true) {
-			sessionID = document.getElementById('session-input').value;
-			sessionStorage.setItem("sessionID", sessionID);
-
-			runID = document.getElementById('run-input').value;
-			sessionStorage.setItem("runID", runID);
-
-			experimenterID = document.getElementById('experimenter-input').value;
-			sessionStorage.setItem("experimenterID", experimenterID);
-
-			subjectID = document.getElementById('subject-input').value;
-			sessionStorage.setItem("subjectID", subjectID);
-		}
 
 		// read fields
 		metadata = {};
