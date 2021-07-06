@@ -24,31 +24,6 @@ function loadConfigurationDirectory() {
 		configDirElement = document.getElementById('config-directory');
 		configDirElement.innerHTML = configDir;
 
-		// // load allData
-		// allData = require(path.join(configDir, "sequence.json"));
-
-		// // replace image names with full local paths
-		// allData.forEach ((data, index, arrayPointer) => {
-
-		// 	fullPath = path.join(configDir, "images", data["mainImage"]);
-		// 	arrayPointer[index]["mainImage"] = fullPath;
-
-		// 	allImages = arrayPointer[index]["images"];
-		// 	allImages.forEach ((innerData, innerIndex)=>{
-		// 		fullPath = path.join(configDir, "images", innerData);
-		// 		arrayPointer[index]["images"][innerIndex] = fullPath;
-		// 	})
-
-		// })
-		// console.log("allData loaded");
-		// console.log(allData);
-
-		// // Save into session storage
-		// sessionStorage.setItem("allData", JSON.stringify(allData));
-
-		// totalTrials = allData.length;
-		// sessionStorage.setItem("totalTrials", totalTrials);
-
 		// do the same for config.json
 		configData = require(path.join(configDir, "config.json"));
 		sessionStorage.setItem("configData", JSON.stringify(configData));
