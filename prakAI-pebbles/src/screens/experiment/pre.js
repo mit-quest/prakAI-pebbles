@@ -120,8 +120,14 @@ function nextTrial () {
 		playSound('choiceSound');
 		nextTrialScreen = document.getElementById('nextTrialScreen');
 		nextTrialScreen.style.visibility = 'visible';
+		//display counter every 20 trials
+		if (currentExperiment % 20 == 0) {
+			document.getElementById('nextTrialCount').style.display = "block";
+		} else {
+			document.getElementById('nextTrialCount').style.display = "none";
+		}
 		nextButton = document.getElementById('nextButton')
-		nextButton.setAttribute('ondblclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
+		nextButton.setAttribute('onclick', 'logStart(currentExperiment); playSound("startSound"); displayNext();');
 	}
 }
 
@@ -148,7 +154,7 @@ function logChoice (currentExperiment, mainImagePosition, selection) {
 		currentExperiment, 
 		mainImagePosition, 
 		selection, 
-		mainImagePosition == selection
+		Number(mainImagePosition == selection)
 	]);	
 
 }
