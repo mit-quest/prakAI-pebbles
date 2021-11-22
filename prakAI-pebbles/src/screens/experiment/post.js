@@ -1,4 +1,6 @@
 console.log("begin experiment/post.js");
+var nodeConsole = require('console');
+var myConsole = new nodeConsole.Console(process.stdout, process.stderr);
 
 setAppBackground();
 refreshStyling();
@@ -37,7 +39,6 @@ if (imageSize % 2 == 1) {
 } else {
 	imageSize = imageSize;
 }
-
 mainImageX = centerW - imageSize/2;
 mainImageY = 3*centerH/2 - imageSize/2;
 
@@ -108,7 +109,7 @@ expImage8.style.width = imageSize.toString() + 'px';
 
 cross = document.getElementById('cross');
 cross.style.position = 'absolute';
-cross.style.top = mainImageY;
+cross.style.top = 3*centerH/2 - cross.getBoundingClientRect().height/2;
 
 nextButton = document.getElementById('nextButton');
 nextButton.style.position = 'absolute';

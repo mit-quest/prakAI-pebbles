@@ -63,12 +63,15 @@ function clickOnMain () {
 	mainImageDIV.style.visibility = 'hidden';
 	
 	// show noise
+	imageSize = parseFloat(metadata['configData']['imageSize']);
+	margin = -1*Math.floor(imageSize/2);
 	noiseDIV = document.createElement('div');
 	noiseDIV.style.position = 'absolute';
-	noiseDIV.style.top = '0px';
-	noiseDIV.style.left = '0px';
-	noiseDIV.style.width = '100%';
-	noiseDIV.style.height = '100%';
+	noiseDIV.style.top = '75%';
+	noiseDIV.style.left = '50%';
+	noiseDIV.style.margin = margin.toString() + 'px';
+	noiseDIV.style.width = imageSize.toString() + 'px';
+	noiseDIV.style.height = imageSize.toString() + 'px';
 	noiseDIV.style.zIndex = '5';
 	noiseDIV.class = '';
 	noiseDIV.innerHTML = '<img style="width: 100%; height: 100%;" src="../../images/noise.gif" alt="">';
