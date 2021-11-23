@@ -49,7 +49,7 @@ let list = [...Array(length).keys()]
 let x_coords = Array.from(list, x => 
                           (Math.round(layoutRadius * Math.cos((x * 2 * Math.PI + 1.5) / (length * 2 - 1)) + mainImageX)).toString() + 'px');
 let y_coords = Array.from(list, y => 
-                          (mainImageY - Math.round(layoutRadius * Math.sin((y * 2 * Math.PI + 1.5)/ (length * 2 - 1)))).toString() + "px");
+                          (3*centerH/2 - Math.round(layoutRadius * Math.sin((y * 2 * Math.PI + 1.5)/ (length * 2 - 1)))).toString() + "px");
 
 mainImageDIV = document.getElementById('mainImageDIV');
 mainImageDIV.style.zIndex = '1';
