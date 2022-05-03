@@ -1,4 +1,6 @@
 console.log("begin results/pre.js");
+var nodeConsole = require('console');
+var myConsole = new nodeConsole.Console(process.stdout, process.stderr);
 
 const { getCurrentWindow, app, dialog } = require('electron').remote;
 let mainWindow = getCurrentWindow();
@@ -29,6 +31,9 @@ function jsonToCSV(metadata) {
 					'main image, position of matched image, position chosen, response score,' + 
 					'start timestamp, main image display timestamp, display choices timestamp, select image timestamp,' + 
 					'position 0, position 1, position 2, position 3, position 4, position 5, position 6, position 7,';
+	// vars to calculate trial score
+	var success = 0;
+	var count = 0;
 	csv += header + '\r\n';
 	for (var i = 0; i < parseInt(data['totalTrials']); i++) {
 		var line = '';
@@ -39,7 +44,10 @@ function jsonToCSV(metadata) {
 			line += trialSetting[i]['images'][j].slice(-5,-4) + ',';
 		}
 		csv += line + '\r\n';
+		success += results[i*4+3][5];
+		count += 1;
 	}
+	document.getElementById('score').innerHTML = Math.round(success/count * 100);
 
 	/*var header = 'Subject ID, Event, Time Stamp, Trial Number, Main Image Position, Selected Image Position, Result,';
 	csv += header + '\r\n';
